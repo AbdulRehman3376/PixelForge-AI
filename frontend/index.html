@@ -1,0 +1,2434 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>PixelForge AI</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="app-container">
+
+        <div class="sidebar">
+            <div class="sidebar-logo">Pixel<span>Forge</span> AI</div>
+
+            <div class="nav-section-label">Workspace</div>
+
+            <div class="nav-item active" data-view="home">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+                <span class="nav-item-label">Home</span>
+            </div>
+            <div class="nav-item" data-view="enhance">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+                <span class="nav-item-label">Enhance</span>
+            </div>
+            <div class="nav-item" data-view="upscale">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
+                <span class="nav-item-label">AI Upscale</span>
+            </div>
+            <div class="nav-item" data-view="filters">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2a10 10 0 100 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.4-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.4c1.7 0 3.1-1.4 3.1-3.1C20.5 6.6 16.7 2 12 2z"/></svg>
+                <span class="nav-item-label">Filters</span>
+            </div>
+            <div class="nav-item" data-view="removebg">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6v6H4z" stroke-dasharray="2 2"/><path d="M14 14h6v6h-6z"/><path d="M9 15l6-6"/></svg>
+                <span class="nav-item-label">Remove BG</span>
+            </div>
+            <div class="nav-item" data-view="aigen">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.6 4.6L18 9l-4.4 1.4L12 15l-1.6-4.6L6 9l4.4-1.4z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>
+                <span class="nav-item-label">AI Generate</span>
+            </div>
+            <div class="nav-item" data-view="portrait">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 016-6h4a6 6 0 016 6v2"/></svg>
+                <span class="nav-item-label">Portrait</span>
+            </div>
+            <div class="nav-item" data-view="batch">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                <span class="nav-item-label">Batch</span>
+            </div>
+            <div class="nav-item" data-view="video">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg>
+                <span class="nav-item-label">Video Studio</span>
+            </div>
+
+            <div class="nav-section-label">Library</div>
+
+            <div class="nav-item" data-view="projects">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+                <span class="nav-item-label">Projects</span>
+            </div>
+            <div class="nav-item" data-view="settings">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 005 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                <span class="nav-item-label">Settings</span>
+            </div>
+
+            <div class="sidebar-footer">
+                <span id="bridge-status" class="status-dot status-dot--pending"></span>
+                <span id="app-version">v0.0.0</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="top-bar">
+                <span class="top-bar-title" id="current-section">Home</span>
+                <!-- PHASE 6: global session status -- reflects core/session.py's -->
+                <!-- EditSession, shared by every tool. Hidden until a session is open. -->
+                <span class="top-bar-session view--hidden" id="session-indicator" title="">
+                    <span id="session-project-name">Untitled</span><span id="session-dirty-dot">•</span>
+                </span>
+                <div class="top-bar-actions">
+                    <button class="btn btn-secondary btn-small" id="btn-session-undo" disabled title="Undo (Ctrl+Z)">↶ Undo</button>
+                    <button class="btn btn-secondary btn-small" id="btn-session-redo" disabled title="Redo (Ctrl+Y)">↷ Redo</button>
+                    <button class="btn btn-secondary" id="btn-import">Import</button>
+                    <button class="btn btn-secondary" id="btn-session-save" disabled title="Save Project (Ctrl+S)">Save Project</button>
+                    <button class="btn btn-primary" id="btn-new-project">New Project</button>
+                </div>
+            </div>
+
+            <div class="content-area">
+
+                <!-- ===== HOME VIEW ===== -->
+                <section class="view" id="view-home">
+                    <div class="view-inner">
+                        <h1 class="view-heading">Welcome back</h1>
+                        <p class="view-subheading">Your local, privacy-first creative studio. Nothing here ever leaves your machine.</p>
+
+                        <div class="quick-grid">
+                            <button class="quick-card" data-action="open-image">
+                                <span class="quick-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>
+                                <span class="quick-card-title">Open Image</span>
+                                <span class="quick-card-desc">Load a single photo to enhance</span>
+                            </button>
+                            <button class="quick-card" data-action="open-batch">
+                                <span class="quick-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+                                <span class="quick-card-title">Batch Import</span>
+                                <span class="quick-card-desc">Process a folder of images at once</span>
+                            </button>
+                            <button class="quick-card" data-action="new-video" data-view-target="video">
+                                <span class="quick-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg></span>
+                                <span class="quick-card-title">Create Video</span>
+                                <span class="quick-card-desc">Turn photos into a cinematic clip</span>
+                            </button>
+                            <button class="quick-card" data-action="open-settings" data-view-target="settings">
+                                <span class="quick-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 005 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span>
+                                <span class="quick-card-title">Settings</span>
+                                <span class="quick-card-desc">Performance, AI models, storage</span>
+                            </button>
+                        </div>
+
+                        <h2 class="section-label">Recent Projects</h2>
+                        <div class="empty-state">
+                            <div class="empty-state-title">No projects yet</div>
+                            <div class="empty-state-sub">Open an image or start a batch to create your first project.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== SETTINGS VIEW ===== -->
+                <section class="view view--hidden" id="view-settings">
+                    <div class="view-inner">
+                        <h1 class="view-heading">Settings</h1>
+                        <p class="view-subheading">Changes are stored locally. Nothing here is synced or uploaded.</p>
+
+                        <div class="settings-group">
+                            <h3 class="settings-group-title">General</h3>
+                            <div class="settings-row">
+                                <div class="settings-row-label">
+                                    <span>Theme</span>
+                                    <span class="settings-row-hint">Interface appearance</span>
+                                </div>
+                                <select class="input" id="setting-theme">
+                                    <option value="dark" selected>Dark</option>
+                                    <option value="light">Light</option>
+                                </select>
+                            </div>
+                            <div class="settings-row">
+                                <div class="settings-row-label">
+                                    <span>Output directory</span>
+                                    <span class="settings-row-hint">Where exported files are saved</span>
+                                </div>
+                                <div class="settings-row-input-group">
+                                    <input class="input" id="setting-output-dir" type="text" placeholder="D:\Projects\PixelForge\output" readonly>
+                                    <button class="btn btn-secondary btn-small" id="btn-choose-output">Browse</button>
+                                </div>
+                            </div>
+                            <div class="settings-row">
+                                <div class="settings-row-label">
+                                    <span>Autosave</span>
+                                    <span class="settings-row-hint">Save project state automatically</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="switch-track"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3 class="settings-group-title">Performance</h3>
+                            <div class="settings-row">
+                                <div class="settings-row-label">
+                                    <span>Processing mode</span>
+                                    <span class="settings-row-hint">This build always runs CPU-only</span>
+                                </div>
+                                <select class="input" disabled>
+                                    <option selected>CPU</option>
+                                </select>
+                            </div>
+                            <div class="settings-row">
+                                <div class="settings-row-label">
+                                    <span>Max worker threads</span>
+                                    <span class="settings-row-hint">Higher values use more RAM</span>
+                                </div>
+                                <input class="input" type="number" min="1" max="8" value="2" style="max-width:100px;">
+                            </div>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3 class="settings-group-title">System Health</h3>
+                            <div class="health-card">
+                                <div class="health-gauges">
+                                    <div class="health-gauge" id="health-gauge-cpu">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle class="health-gauge-track" cx="50" cy="50" r="42"></circle>
+                                            <circle class="health-gauge-progress" cx="50" cy="50" r="42"></circle>
+                                        </svg>
+                                        <div class="health-gauge-label">
+                                            <span class="health-gauge-value" id="health-cpu-value">--%</span>
+                                            <span class="health-gauge-name">CPU</span>
+                                        </div>
+                                    </div>
+                                    <div class="health-gauge" id="health-gauge-ram">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle class="health-gauge-track" cx="50" cy="50" r="42"></circle>
+                                            <circle class="health-gauge-progress" cx="50" cy="50" r="42"></circle>
+                                        </svg>
+                                        <div class="health-gauge-label">
+                                            <span class="health-gauge-value" id="health-ram-value">--%</span>
+                                            <span class="health-gauge-name">RAM</span>
+                                        </div>
+                                    </div>
+                                    <div class="health-gauge" id="health-gauge-disk">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle class="health-gauge-track" cx="50" cy="50" r="42"></circle>
+                                            <circle class="health-gauge-progress" cx="50" cy="50" r="42"></circle>
+                                        </svg>
+                                        <div class="health-gauge-label">
+                                            <span class="health-gauge-value" id="health-disk-value">--%</span>
+                                            <span class="health-gauge-name">Disk</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="health-details">
+                                    <div class="health-detail-row">
+                                        <span class="health-detail-label">RAM used</span>
+                                        <span class="health-detail-value" id="health-ram-detail">--</span>
+                                    </div>
+                                    <div class="health-detail-row">
+                                        <span class="health-detail-label">Free disk space</span>
+                                        <span class="health-detail-value" id="health-disk-detail">--</span>
+                                    </div>
+                                    <div class="health-detail-row">
+                                        <span class="health-detail-label">Status</span>
+                                        <span class="badge badge--ok" id="health-status-badge">Nominal</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="health-warning-banner health-warning-banner--hidden" id="health-warning-banner">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                                <span id="health-warning-text">System running hot -- close a few heavy tools or wait for it to cool down.</span>
+                            </div>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3 class="settings-group-title">AI Models</h3>
+                            <div class="settings-row">
+                                <div class="settings-row-label">
+                                    <span>Upscaling model (Real-ESRGAN)</span>
+                                    <span class="settings-row-hint">Installed in Phase 9</span>
+                                </div>
+                                <span class="badge badge--muted" id="settings-upscale-model-status">Checking...</span>
+                            </div>
+                            <div class="settings-row">
+                                <div class="settings-row-label">
+                                    <span>Face restoration (GFPGAN)</span>
+                                    <span class="settings-row-hint">Installed in Phase 10</span>
+                                </div>
+                                <span class="badge badge--muted" id="settings-facerestore-model-status">Checking...</span>
+                            </div>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3 class="settings-group-title">Video</h3>
+                            <div class="settings-row">
+                                <div class="settings-row-label">
+                                    <span>FFmpeg</span>
+                                    <span class="settings-row-hint">Required for Video Studio export</span>
+                                </div>
+                                <span class="badge badge--ok" id="ffmpeg-status">Detected</span>
+                            </div>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3 class="settings-group-title">Storage</h3>
+                            <div class="settings-row">
+                                <div class="settings-row-label">
+                                    <span>Cache</span>
+                                    <span class="settings-row-hint">Thumbnails and processing previews</span>
+                                </div>
+                                <button class="btn btn-secondary btn-small" id="btn-clear-cache">Clear cache</button>
+                            </div>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3 class="settings-group-title">Help</h3>
+                            <div class="settings-row">
+                                <div class="settings-row-label">
+                                    <span>Onboarding tutorial</span>
+                                    <span class="settings-row-hint">Replay the first-run walkthrough</span>
+                                </div>
+                                <button class="btn btn-secondary btn-small" id="btn-show-tutorial">Show tutorial</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== ENHANCE VIEW (Phase 2 — Image Editor) ===== -->
+                <section class="view view--hidden" id="view-enhance">
+                    <div class="editor-error view--hidden" id="editor-error"></div>
+
+                    <!-- Empty state / dropzone, shown until an image is loaded -->
+                    <div class="editor-dropzone" id="editor-dropzone">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        <div class="placeholder-text">Drop an image here</div>
+                        <div class="placeholder-sub">JPG, JFIF, PNG, WEBP, BMP or TIFF — or browse from disk</div>
+                        <button class="btn btn-primary" id="btn-editor-open-empty">Open Image</button>
+                    </div>
+
+                    <!-- Loaded workspace -->
+                    <div class="editor-workspace view--hidden" id="editor-workspace">
+                        <div class="editor-toolbar">
+                            <div class="editor-toolbar-left">
+                                <span class="editor-filename" id="editor-filename">untitled.jpg</span>
+                                <span class="editor-dimensions" id="editor-dimensions"></span>
+                            </div>
+                            <div class="editor-toolbar-right">
+                                <button class="btn btn-secondary btn-small" id="btn-zoom-out" title="Zoom out">−</button>
+                                <span class="editor-zoom-level" id="editor-zoom-level">100%</span>
+                                <button class="btn btn-secondary btn-small" id="btn-zoom-in" title="Zoom in">+</button>
+                                <button class="btn btn-secondary btn-small" id="btn-zoom-fit">Fit</button>
+                                <button class="btn btn-secondary btn-small" id="btn-zoom-reset">100%</button>
+                                <button class="btn btn-secondary btn-small" id="btn-fullscreen" title="Fullscreen">⛶</button>
+                                <button class="btn btn-secondary btn-small" id="btn-editor-replace">Replace</button>
+                            </div>
+                        </div>
+
+                        <div class="editor-body">
+                            <div class="editor-canvas-wrap" id="editor-canvas-wrap">
+                                <!-- Only visible while in fullscreen (see .editor-canvas-wrap:fullscreen
+                                     rule in main.css). The toolbar's Fullscreen button toggles
+                                     fullscreen too, but it lives OUTSIDE editor-canvas-wrap, so the
+                                     Fullscreen API hides it along with the rest of the toolbar --
+                                     leaving no visible way to exit except Esc. This button lives
+                                     INSIDE editor-canvas-wrap so it stays on screen. -->
+                                <button class="btn btn-secondary btn-small editor-fullscreen-exit" id="btn-fullscreen-exit" title="Exit fullscreen (Esc)">✕ Exit Fullscreen</button>
+                                <div class="editor-canvas" id="editor-canvas">
+                                    <img class="editor-image editor-image--before" id="editor-image-before" alt="Original">
+                                    <div class="editor-image-after-wrap" id="editor-image-after-wrap">
+                                        <img class="editor-image editor-image--after" id="editor-image-after" alt="Edited">
+                                        <!-- PHASE 3: Highlight/Shadow Clipping Warning -- lives
+                                             INSIDE the after-wrap (not as a canvas-level sibling)
+                                             so it inherits the same compare-slider clip-path as
+                                             the After image itself and never bleeds into the
+                                             Before side. Filled client-side (no backend round
+                                             trip) from the rendered preview's own pixels -- see
+                                             editor.js's "Clipping Warning" section. -->
+                                        <canvas class="clip-warning-canvas view--hidden" id="editor-clip-canvas"></canvas>
+                                    </div>
+                                    <div class="editor-compare-handle" id="editor-compare-handle"></div>
+                                    <div class="editor-compare-label editor-compare-label--before">Before</div>
+                                    <div class="editor-compare-label editor-compare-label--after">After</div>
+                                    <div class="editor-preview-spinner" id="editor-preview-spinner">Rendering...</div>
+
+                                    <!-- PHASE 3: Manual Crop overlay -- same crop-overlay/
+                                         crop-box/crop-handle pattern as Remove BG's Manual Crop
+                                         (see main.css), just a separate instance with its own
+                                         IDs since this editor and Remove BG are different views. -->
+                                    <div class="crop-overlay view--hidden" id="editor-crop-overlay">
+                                        <div class="crop-box" id="editor-crop-box">
+                                            <div class="crop-handle crop-handle--nw" data-handle="nw"></div>
+                                            <div class="crop-handle crop-handle--ne" data-handle="ne"></div>
+                                            <div class="crop-handle crop-handle--sw" data-handle="sw"></div>
+                                            <div class="crop-handle crop-handle--se" data-handle="se"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PHASE 3: Selective/Local Adjustments -- draggable/
+                                         resizable radial region overlay; position/size is
+                                         stored as fractions of image size (see
+                                         core/enhancer.py::_ellipse_mask) and read directly off
+                                         this element's inline style by editor.js. -->
+                                    <div class="local-adjust-region view--hidden" id="editor-local-region">
+                                        <div class="local-adjust-resize" data-handle="resize"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <aside class="editor-panel" id="editor-panel">
+                                <button class="btn btn-primary btn-auto-enhance" id="btn-auto-enhance">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+                                    Auto Enhance
+                                </button>
+                                <p class="editor-panel-note" id="auto-enhance-summary"></p>
+
+                                <!-- PHASE 5: Analyzer. Read-only -- unlike Auto Enhance above,
+                                     this never touches the sliders/preview. Runs
+                                     core/analyzer.py (subject/scene, lighting, light
+                                     quality, sky, dominant colors, face detection via
+                                     ai/face_detector.py, expanded quality) on the ORIGINAL
+                                     opened photo and displays a structured "final output"
+                                     summary below. See frontend/js/editor.js's "Phase 5:
+                                     Analyzer" section and ui/bridge.py::analyzeImageAsync. -->
+                                <button class="btn btn-secondary btn-auto-enhance" id="btn-analyze-photo">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                                    Analyze Photo
+                                </button>
+                                <div class="analyze-panel view--hidden" id="analyze-results">
+
+                                    <!-- Header: overall score ring + grade + one-line summary. -->
+                                    <div class="analyze-score-row">
+                                        <div class="analyze-score-ring" id="analyze-score-ring" data-grade="">
+                                            <span class="analyze-score-value" id="analyze-score-value">--</span>
+                                        </div>
+                                        <div class="analyze-score-meta">
+                                            <p class="analyze-score-grade" id="analyze-score-grade"></p>
+                                            <p class="editor-panel-note" id="analyze-summary"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="analyze-badges" id="analyze-badges"></div>
+
+                                    <div class="analyze-section">
+                                        <h4 class="analyze-section-title">Quality</h4>
+                                        <div class="analyze-stats" id="analyze-quality-stats"></div>
+                                    </div>
+
+                                    <div class="analyze-section">
+                                        <h4 class="analyze-section-title">Lighting</h4>
+                                        <div class="analyze-stats" id="analyze-lighting-stats"></div>
+                                    </div>
+
+                                    <div class="analyze-section">
+                                        <h4 class="analyze-section-title">Sky</h4>
+                                        <div class="analyze-stats" id="analyze-sky-stats"></div>
+                                    </div>
+
+                                    <div class="analyze-section">
+                                        <h4 class="analyze-section-title">Scene &amp; Dimensions</h4>
+                                        <div class="analyze-stats" id="analyze-stats"></div>
+                                    </div>
+
+                                    <div class="analyze-section">
+                                        <h4 class="analyze-section-title">Dominant Colors</h4>
+                                        <div class="analyze-swatches" id="analyze-swatches"></div>
+                                    </div>
+                                </div>
+
+                                <!-- PHASE 6 v2: Smart Pipeline. Runs core/analyzer.py +
+                                     core/smart_pipeline.py (via ui/bridge.py's smartPipeline*
+                                     Slots) and shows a full recipe: match score, per-step
+                                     apply/skip with reasons + on/off toggles, adaptive
+                                     intensity, safety warnings, and alternative looks.
+                                     "Apply Pipeline" commits the FULL recipe straight onto
+                                     the shared Working Image (core/session.py) -- it no
+                                     longer hands off to Filters. See frontend/js/editor.js's
+                                     "Phase 6: Smart Pipeline" section. -->
+                                <button class="btn btn-secondary btn-auto-enhance" id="btn-smart-pipeline">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+                                    Smart Pipeline
+                                </button>
+                                <div class="pipeline-panel view--hidden" id="pipeline-results">
+                                    <div class="pipeline-header">
+                                        <span class="pipeline-name" id="pipeline-name"></span>
+                                        <span class="badge" id="pipeline-match-score"></span>
+                                    </div>
+                                    <div class="analyze-badges" id="pipeline-signals"></div>
+                                    <p class="editor-panel-note" id="pipeline-reason"></p>
+
+                                    <h3 class="editor-panel-title">Recipe</h3>
+                                    <div class="pipeline-recipe" id="pipeline-recipe"></div>
+
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>Intensity</span>
+                                            <span class="editor-control-value" id="val-pipeline-intensity">70%</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="ctrl-pipeline-intensity" min="0" max="100" value="70">
+                                    </div>
+
+                                    <div class="pipeline-safety" id="pipeline-safety"></div>
+
+                                    <div class="pipeline-actions">
+                                        <button class="btn btn-secondary btn-small" id="btn-pipeline-preview" style="flex:1;">Preview</button>
+                                        <button class="btn btn-primary btn-small" id="btn-pipeline-apply" style="flex:1;">Apply Pipeline</button>
+                                    </div>
+                                    <div class="pipeline-actions">
+                                        <button class="btn btn-secondary btn-small" id="btn-pipeline-dismiss" style="flex:1;">Dismiss</button>
+                                        <button class="btn btn-secondary btn-small" id="btn-pipeline-rerun" style="flex:1;">Re-run</button>
+                                    </div>
+
+                                    <h3 class="editor-panel-title">Other Recommendations</h3>
+                                    <div class="pipeline-alternatives" id="pipeline-alternatives"></div>
+                                </div>
+
+                                <!-- Shown briefly right after Apply Pipeline succeeds --
+                                     gives the user an immediate Undo without hunting for the
+                                     global Undo button in the top bar. -->
+                                <div class="pipeline-applied-panel view--hidden" id="pipeline-applied-panel">
+                                    <p class="editor-panel-note" id="pipeline-applied-summary"></p>
+                                    <button class="btn btn-secondary btn-small" id="btn-pipeline-undo-applied" style="width:100%;">Undo Smart Pipeline</button>
+                                </div>
+
+
+                                <h3 class="editor-panel-title">Before / After</h3>
+                                <input type="range" class="input-range" id="editor-compare-slider" min="0" max="100" value="50">
+
+                                <!-- PHASE 3 (on-request addition): Straighten + Crop. Two
+                                     independent, applied-one-at-a-time steps -- see
+                                     frontend/js/editor.js and ui/bridge.py::straightenImage/
+                                     cropImage for why they're kept separate rather than one
+                                     combined control. -->
+                                <h3 class="editor-panel-title">Straighten &amp; Crop</h3>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Straighten</span>
+                                        <span class="editor-control-value" id="val-straighten">0°</span>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-straighten" min="-45" max="45" value="0">
+                                </div>
+                                <button class="btn btn-secondary btn-small" id="btn-straighten-apply" disabled style="width:100%;">Apply Straighten</button>
+                                <p class="editor-panel-note">Fixes a slightly tilted photo. The slider gives a quick on-screen preview; Apply commits it at full resolution before you crop.</p>
+
+                                <div style="display:flex; gap:8px; margin-top:8px;">
+                                    <button class="btn btn-secondary btn-small" id="btn-editor-crop-start" disabled style="flex:1;">Manual Crop</button>
+                                    <button class="btn btn-secondary btn-small view--hidden" id="btn-editor-crop-apply" style="flex:1;">Apply</button>
+                                    <button class="btn btn-secondary btn-small view--hidden" id="btn-editor-crop-cancel" style="flex:1;">Cancel</button>
+                                </div>
+
+                                <!-- Missing-feature #2 (this session): crop aspect-ratio
+                                     presets. Only meaningful once Manual Crop is active
+                                     (the crop box exists) -- editor.js shows/enables this
+                                     row alongside the crop overlay and locks the box's
+                                     drag-resize to whichever ratio is selected ("Free" =
+                                     no lock, the existing free-form behaviour). -->
+                                <div class="crop-ratio-row view--hidden" id="editor-crop-ratio-row">
+                                    <button type="button" class="crop-ratio-btn is-active" data-ratio="free">Free</button>
+                                    <button type="button" class="crop-ratio-btn" data-ratio="1:1">1:1</button>
+                                    <button type="button" class="crop-ratio-btn" data-ratio="4:5">4:5</button>
+                                    <button type="button" class="crop-ratio-btn" data-ratio="16:9">16:9</button>
+                                    <button type="button" class="crop-ratio-btn" data-ratio="9:16">9:16</button>
+                                </div>
+
+                                <!-- Missing-feature #1 (this session): lossless 90 rotate
+                                     + flip, separate from the fine-angle Straighten slider
+                                     above -- see core/crop.py::transpose_image and
+                                     ui/bridge.py::transposeImage. Each button commits
+                                     immediately (no separate Apply step needed, since a
+                                     90/flip has no in-between preview state to adjust). -->
+                                <div style="display:flex; gap:8px; margin-top:8px;">
+                                    <button class="btn btn-secondary btn-small" id="btn-rotate-90" disabled style="flex:1;" title="Rotate 90° clockwise">⟳ Rotate</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-flip-h" disabled style="flex:1;" title="Flip horizontal">⇋ Flip H</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-flip-v" disabled style="flex:1;" title="Flip vertical">⇵ Flip V</button>
+                                </div>
+
+                                <h3 class="editor-panel-title">Manual Controls</h3>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Brightness</span>
+                                        <span class="editor-control-value" id="val-brightness">100%</span><button type="button" class="ctrl-reset-btn" data-ctrl="brightness" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-brightness" min="50" max="150" value="100">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Contrast</span>
+                                        <span class="editor-control-value" id="val-contrast">100%</span><button type="button" class="ctrl-reset-btn" data-ctrl="contrast" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-contrast" min="50" max="150" value="100">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Saturation</span>
+                                        <span class="editor-control-value" id="val-saturation">100%</span><button type="button" class="ctrl-reset-btn" data-ctrl="saturation" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-saturation" min="0" max="200" value="100">
+                                </div>
+
+                                <!-- PHASE 3 (manual controls extension): Auto White Balance. -->
+                                <!-- Reads core/enhancer.py::auto_white_balance and drops the  -->
+                                <!-- suggested values straight into Temperature/Tint below.    -->
+                                <button class="btn btn-secondary btn-small" id="btn-auto-wb" style="width:100%; margin-top:4px;" title="Analyze neutral tones and auto-correct color cast">⚖ Auto White Balance</button>
+                                <p class="editor-panel-note view--hidden" id="auto-wb-summary"></p>
+
+                                <h3 class="editor-panel-title">Light</h3>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Exposure</span>
+                                        <span class="editor-control-value" id="val-exposure">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="exposure" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-exposure" min="-100" max="100" value="0">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Highlights</span>
+                                        <span class="editor-control-value" id="val-highlights">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="highlights" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-highlights" min="-100" max="100" value="0">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Shadows</span>
+                                        <span class="editor-control-value" id="val-shadows">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="shadows" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-shadows" min="-100" max="100" value="0">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Whites</span>
+                                        <span class="editor-control-value" id="val-whites">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="whites" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-whites" min="-100" max="100" value="0">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Blacks</span>
+                                        <span class="editor-control-value" id="val-blacks">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="blacks" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-blacks" min="-100" max="100" value="0">
+                                </div>
+                                <!-- PHASE 3: Highlight/Shadow Recovery -- dedicated recovery of -->
+                                <!-- near-clipped detail, separate from the Highlights/Shadows   -->
+                                <!-- push above. See core/enhancer.py::_apply_highlight_shadow_recovery. -->
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Highlight Recovery</span>
+                                        <span class="editor-control-value" id="val-highlight_recovery">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="highlight_recovery" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-highlight_recovery" min="0" max="100" value="0">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Shadow Recovery</span>
+                                        <span class="editor-control-value" id="val-shadow_recovery">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="shadow_recovery" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-shadow_recovery" min="0" max="100" value="0">
+                                </div>
+                                <div style="display:flex; gap:8px; margin-top:2px;">
+                                    <button class="btn btn-secondary btn-small toggle-btn" id="btn-toggle-highlight-clip" style="flex:1;" title="Overlay zebra stripes over blown-out highlights">Highlight Clip Warning</button>
+                                    <button class="btn btn-secondary btn-small toggle-btn" id="btn-toggle-shadow-clip" style="flex:1;" title="Overlay zebra stripes over crushed shadows">Shadow Clip Warning</button>
+                                </div>
+
+                                <h3 class="editor-panel-title">Color</h3>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Temperature</span>
+                                        <span class="editor-control-value" id="val-temperature">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="temperature" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-temperature" min="-100" max="100" value="0">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Tint</span>
+                                        <span class="editor-control-value" id="val-tint">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="tint" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-tint" min="-100" max="100" value="0">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Vibrance</span>
+                                        <span class="editor-control-value" id="val-vibrance">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="vibrance" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-vibrance" min="-100" max="100" value="0">
+                                </div>
+
+                                <h3 class="editor-panel-title">Detail</h3>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Sharpness</span>
+                                        <span class="editor-control-value" id="val-sharpness">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="sharpness" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-sharpness" min="0" max="100" value="0">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Clarity</span>
+                                        <span class="editor-control-value" id="val-clarity">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="clarity" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-clarity" min="0" max="100" value="0">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Noise Reduction</span>
+                                        <span class="editor-control-value" id="val-noise_reduction">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="noise_reduction" title="Reset">↺</button>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-noise_reduction" min="0" max="100" value="0">
+                                </div>
+                                <!-- PHASE 3: Skin-tone Protection + Smart Sharpen Protection -- -->
+                                <!-- both toggles, not sliders; core/enhancer.py reads them as   -->
+                                <!-- 0/1 in the same adjustments dict as every other control.    -->
+                                <div style="display:flex; gap:8px; margin-top:2px;">
+                                    <button class="btn btn-secondary btn-small toggle-btn" id="btn-toggle-skin-protect" style="flex:1;" title="Protect skin tones from vibrance/saturation/temperature shifts">Skin-tone Protection</button>
+                                    <button class="btn btn-secondary btn-small toggle-btn" id="btn-toggle-sharpen-protect" style="flex:1;" title="Edge-aware sharpening -- protects flat/noisy areas from halos">Smart Sharpen Protection</button>
+                                </div>
+
+                                <h3 class="editor-panel-title">Effects</h3>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Vignette</span>
+                                        <span class="editor-control-value" id="val-vignette">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="vignette" title="Reset">↺</button>
+                                    </div>
+                                    <!-- PHASE 3: last remaining item from the original Phase 3 -->
+                                    <!-- operations list (see spec) -- radial edge darkening,   -->
+                                    <!-- see core/enhancer.py::_apply_vignette.                 -->
+                                    <input type="range" class="input-range" id="ctrl-vignette" min="0" max="100" value="0">
+                                </div>
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Smoke</span>
+                                        <span class="editor-control-value" id="val-smoke">0</span><button type="button" class="ctrl-reset-btn" data-ctrl="smoke" title="Reset">↺</button>
+                                    </div>
+                                    <!-- PHASE 4: procedural atmospheric smoke/haze overlay --      -->
+                                    <!-- see core/enhancer.py::_apply_smoke. Purely a synthesized    -->
+                                    <!-- soft-noise texture, screen-blended -- not the same thing as  -->
+                                    <!-- Phase 9's "smoke/haze artifact control" (which suppresses    -->
+                                    <!-- AI-upscaling artifacts, not add an effect).                  -->
+                                    <input type="range" class="input-range" id="ctrl-smoke" min="0" max="100" value="0">
+                                </div>
+
+                                <!-- PHASE 3: Selective/Local Adjustments -- a single draggable/ -->
+                                <!-- resizable radial region (Lightroom "radial filter"-style),  -->
+                                <!-- see core/enhancer.py::_apply_local_adjustments. Drawn as an  -->
+                                <!-- overlay ellipse on #editor-canvas-wrap (wired in editor.js). -->
+                                <h3 class="editor-panel-title">Selective Adjustment</h3>
+                                <button class="btn btn-secondary btn-small" id="btn-local-add" style="width:100%;" title="Add a draggable adjustment region to the photo">+ Add Radial Region</button>
+                                <div id="local-adjust-panel" class="view--hidden">
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>Region Exposure</span>
+                                            <span class="editor-control-value" id="val-local-exposure">0</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="ctrl-local-exposure" min="-100" max="100" value="0">
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>Region Saturation</span>
+                                            <span class="editor-control-value" id="val-local-saturation">100%</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="ctrl-local-saturation" min="0" max="200" value="100">
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>Region Sharpness</span>
+                                            <span class="editor-control-value" id="val-local-sharpness">0</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="ctrl-local-sharpness" min="0" max="100" value="0">
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>Feather</span>
+                                            <span class="editor-control-value" id="val-local-feather">50</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="ctrl-local-feather" min="0" max="100" value="50">
+                                    </div>
+                                    <div style="display:flex; gap:8px;">
+                                        <button class="btn btn-secondary btn-small toggle-btn" id="btn-local-invert" style="flex:1;" title="Adjust OUTSIDE the region instead of inside">Invert</button>
+                                        <button class="btn btn-secondary btn-small" id="btn-local-remove" style="flex:1;">Remove Region</button>
+                                    </div>
+                                    <p class="editor-panel-note">Drag the circle to move it, drag its edge to resize. Adjustments apply only inside (or outside, if inverted).</p>
+                                </div>
+
+                                <div style="display:flex; gap:8px;">
+                                    <button class="btn btn-secondary btn-small" id="btn-reset-controls" style="flex:1;">Reset All</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-copy-adjustments" style="flex:1;" title="Copy these slider values">Copy</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-paste-adjustments" style="flex:1;" title="Paste previously-copied slider values">Paste</button>
+                                </div>
+
+                                <div class="editor-panel-spacer"></div>
+
+                                <!-- PHASE 6: commits the 14 sliders onto the shared Working -->
+                                <!-- Image (core/session.py::commit_adjustments) so Filters / -->
+                                <!-- Remove BG / Smart Pipeline see this result next -- separate -->
+                                <!-- from Export, which only ever writes a copy to disk. -->
+                                <button class="btn btn-secondary" id="btn-editor-apply">Apply</button>
+                                <button class="btn btn-primary" id="btn-editor-export">Export</button>
+                                <p class="editor-panel-note">Exports never overwrite the original file. Apply updates the working image other tools see.</p>
+                                <button class="btn btn-secondary view--hidden" id="btn-editor-send-to-removebg">Continue in Remove BG →</button>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="view view--hidden" id="view-removebg">
+                    <div class="editor-error view--hidden" id="removebg-error"></div>
+
+                    <!-- Empty state / dropzone, shown until an image is loaded -->
+                    <div class="editor-dropzone" id="removebg-dropzone">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h7v7H4z" stroke-dasharray="2 2"/><path d="M13 13h7v7h-7z"/><path d="M9 15l6-6"/></svg>
+                        <div class="placeholder-text">Drop an image here</div>
+                        <div class="placeholder-sub">JPG, JFIF, PNG, WEBP, BMP or TIFF — or browse from disk</div>
+                        <button class="btn btn-primary" id="btn-removebg-open-empty">Open Image</button>
+                    </div>
+
+                    <!-- Loaded workspace -->
+                    <div class="editor-workspace view--hidden" id="removebg-workspace">
+                        <div class="editor-toolbar">
+                            <div class="editor-toolbar-left">
+                                <span class="editor-filename" id="removebg-filename">untitled.jpg</span>
+                                <span class="editor-dimensions" id="removebg-dimensions"></span>
+                            </div>
+                            <div class="editor-toolbar-right">
+                                <button class="btn btn-secondary btn-small" id="btn-removebg-zoom-out" title="Zoom out">−</button>
+                                <span class="editor-zoom-level" id="removebg-zoom-level">100%</span>
+                                <button class="btn btn-secondary btn-small" id="btn-removebg-zoom-in" title="Zoom in">+</button>
+                                <button class="btn btn-secondary btn-small" id="btn-removebg-zoom-fit">Fit</button>
+                                <button class="btn btn-secondary btn-small" id="btn-removebg-zoom-reset">100%</button>
+                                <button class="btn btn-secondary btn-small" id="btn-removebg-fullscreen" title="Fullscreen">⛶</button>
+                                <div class="tool-tabs" id="removebg-tool-tabs">
+                                    <button class="tool-tab active" data-tool="background" id="tab-tool-background">Background</button>
+                                    <button class="tool-tab" data-tool="erase" id="tab-tool-erase">Erase Object</button>
+                                </div>
+                                <button class="btn btn-secondary btn-small" id="btn-removebg-replace">Replace</button>
+                            </div>
+                        </div>
+
+                        <div class="editor-body">
+                            <div class="editor-canvas-wrap" id="removebg-canvas-wrap">
+                                <button class="btn btn-secondary btn-small editor-fullscreen-exit" id="btn-removebg-fullscreen-exit" title="Exit fullscreen (Esc)">✕ Exit Fullscreen</button>
+                                <div class="editor-canvas" id="removebg-canvas">
+                                    <img class="editor-image editor-image--before" id="removebg-image-before" alt="Original">
+                                    <div class="editor-image-after-wrap" id="removebg-image-after-wrap">
+                                        <img class="editor-image editor-image--after" id="removebg-image-after" alt="Result">
+                                    </div>
+                                    <!-- Mask-brush canvas, only shown/interactive while the "Erase Object" tool tab is active -->
+                                    <canvas class="removebg-mask-canvas view--hidden" id="removebg-mask-canvas"></canvas>
+                                    <!-- Keep/Remove touch-up brush canvas, only shown/interactive while the touch-up panel is open (Background tool) -->
+                                    <canvas class="removebg-mask-canvas view--hidden" id="touchup-mask-canvas"></canvas>
+                                    <!-- Manual Crop overlay: dims everything outside the crop box, with draggable handles on the box itself -->
+                                    <div class="crop-overlay view--hidden" id="crop-overlay">
+                                        <div class="crop-box" id="crop-box">
+                                            <div class="crop-handle crop-handle--nw" data-handle="nw"></div>
+                                            <div class="crop-handle crop-handle--ne" data-handle="ne"></div>
+                                            <div class="crop-handle crop-handle--sw" data-handle="sw"></div>
+                                            <div class="crop-handle crop-handle--se" data-handle="se"></div>
+                                        </div>
+                                    </div>
+                                    <div class="editor-compare-handle" id="removebg-compare-handle"></div>
+                                    <div class="editor-compare-label editor-compare-label--before">Before</div>
+                                    <div class="editor-compare-label editor-compare-label--after">After</div>
+                                    <div class="editor-preview-spinner" id="removebg-preview-spinner">Processing...</div>
+                                </div>
+                            </div>
+
+                            <aside class="editor-panel">
+                                <!-- ===== Background Removal tool panel ===== -->
+                                <div class="tool-panel" id="panel-tool-background">
+                                    <button class="btn btn-primary btn-auto-enhance" id="btn-remove-bg">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h7v7H4z" stroke-dasharray="2 2"/><path d="M13 13h7v7h-7z"/><path d="M9 15l6-6"/></svg>
+                                        Remove Background
+                                    </button>
+                                    <p class="editor-panel-note" id="removebg-summary">Cuts the subject out using a local AI model (rembg) — nothing leaves your computer.</p>
+
+                                    <h3 class="editor-panel-title">Before / After</h3>
+                                    <input type="range" class="input-range" id="removebg-compare-slider" min="0" max="100" value="50">
+
+                                    <!-- Missing-feature #10 (this session): Subject-only preview --
+                                         temporarily shows the raw cutout (transparent, checkerboard
+                                         backdrop) regardless of the selected Background mode below,
+                                         so the user can inspect cutout quality on its own. Doesn't
+                                         change the actual bgMode selection -- unchecking reverts to
+                                         whatever mode/options were already selected. -->
+                                    <div class="toggle-row" id="row-subject-only">
+                                        <div class="settings-row-label">
+                                            <span>Preview Subject Only</span>
+                                            <span class="settings-row-hint">Ignore background mode, show the cutout on a checkerboard</span>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="ctrl-subject-only" disabled>
+                                            <span class="switch-track"></span>
+                                        </label>
+                                    </div>
+
+                                    <h3 class="editor-panel-title">Edge Refinement</h3>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>Feather Edge</span>
+                                            <span class="editor-control-value" id="val-edge-feather">0</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="ctrl-edge-feather" min="0" max="100" value="0" disabled>
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>Expand / Contract</span>
+                                            <span class="editor-control-value" id="val-edge-expand">0</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="ctrl-edge-expand" min="-30" max="30" value="0" disabled>
+                                    </div>
+
+                                    <div class="toggle-row" id="row-hair-refine">
+                                        <div class="settings-row-label">
+                                            <span>AI Hair Refine</span>
+                                            <span class="settings-row-hint">Softer edges on hair &amp; fur (slower)</span>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="ctrl-hair-refine" disabled>
+                                            <span class="switch-track"></span>
+                                        </label>
+                                    </div>
+
+                                    <!-- Missing-feature #6 (this session): Edge Decontamination --
+                                         removes the background-color halo/fringe baked into the RGB
+                                         of semi-transparent edge pixels. See ai/bg_remover.py::decontaminate_edges. -->
+                                    <div class="toggle-row" id="row-decontaminate">
+                                        <div class="settings-row-label">
+                                            <span>Remove Color Fringing</span>
+                                            <span class="settings-row-hint">Cleans background-color halo off hair/edges</span>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="ctrl-decontaminate" disabled>
+                                            <span class="switch-track"></span>
+                                        </label>
+                                    </div>
+
+                                    <h3 class="editor-panel-title">Touch-Up Brush</h3>
+                                    <p class="editor-panel-note">Paint to force-keep or force-remove spots the auto cutout got wrong.</p>
+                                    <button class="btn btn-secondary btn-small" id="btn-touchup-toggle" disabled style="width:100%; margin-bottom:8px;">Enable Brush</button>
+                                    <div class="bg-mode-tabs" id="touchup-mode-tabs">
+                                        <button class="bg-mode-tab active" data-touchup-mode="keep">Keep</button>
+                                        <button class="bg-mode-tab" data-touchup-mode="remove">Remove</button>
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>Brush Size</span>
+                                            <span class="editor-control-value" id="val-touchup-brush-size">28</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="ctrl-touchup-brush-size" min="6" max="100" value="28" disabled>
+                                    </div>
+                                    <div class="editor-control-row" style="display:flex; gap:8px;">
+                                        <button class="btn btn-secondary btn-small" id="btn-touchup-clear" disabled style="flex:1;">Clear</button>
+                                        <button class="btn btn-secondary btn-small" id="btn-touchup-undo" disabled style="flex:1;">Undo</button>
+                                        <button class="btn btn-secondary btn-small" id="btn-touchup-redo" disabled style="flex:1;">Redo</button>
+                                    </div>
+                                    <button class="btn btn-secondary btn-small" id="btn-touchup-apply" disabled style="width:100%;">Apply Touch-Up</button>
+
+                                    <h3 class="editor-panel-title">Background</h3>
+                                    <div class="bg-mode-tabs" id="bg-mode-tabs">
+                                        <button class="bg-mode-tab active" data-bg-mode="transparent">Transparent</button>
+                                        <button class="bg-mode-tab" data-bg-mode="color">Color</button>
+                                        <button class="bg-mode-tab" data-bg-mode="blur">Blur</button>
+                                        <button class="bg-mode-tab" data-bg-mode="gradient">Gradient</button>
+                                        <button class="bg-mode-tab" data-bg-mode="image">Image</button>
+                                    </div>
+
+                                    <div class="bg-mode-options view--hidden" id="bg-options-color">
+                                        <input type="color" id="ctrl-bg-color" value="#ffffff" class="color-swatch-input">
+                                    </div>
+                                    <div class="bg-mode-options view--hidden" id="bg-options-blur">
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label">
+                                                <span>Blur Amount</span>
+                                                <span class="editor-control-value" id="val-bg-blur">18</span>
+                                            </div>
+                                            <input type="range" class="input-range" id="ctrl-bg-blur" min="2" max="40" value="18">
+                                        </div>
+                                    </div>
+                                    <!-- Missing-feature #8 (this session): Background Gradient --
+                                         a 4th background mode alongside transparent/color/blur/image. -->
+                                    <div class="bg-mode-options view--hidden" id="bg-options-gradient">
+                                        <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                                            <label style="font-size:12.5px; color:var(--text-secondary);">From
+                                                <input type="color" id="ctrl-bg-gradient-color1" value="#1e1e28" class="color-swatch-input">
+                                            </label>
+                                            <label style="font-size:12.5px; color:var(--text-secondary);">To
+                                                <input type="color" id="ctrl-bg-gradient-color2" value="#c8c8dc" class="color-swatch-input">
+                                            </label>
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label">
+                                                <span>Angle</span>
+                                                <span class="editor-control-value" id="val-bg-gradient-angle">90°</span>
+                                            </div>
+                                            <input type="range" class="input-range" id="ctrl-bg-gradient-angle" min="0" max="359" value="90">
+                                        </div>
+                                    </div>
+                                    <div class="bg-mode-options view--hidden" id="bg-options-image">
+                                        <button class="btn btn-secondary btn-small" id="btn-choose-bg-image">Choose Image…</button>
+                                        <span class="bg-image-filename" id="bg-image-filename">No image selected</span>
+                                        <!-- Missing-feature #9 (this session): Background Position/Scale --
+                                             pan + zoom the chosen background image behind the subject. -->
+                                        <div class="editor-control-row" style="margin-top:10px;">
+                                            <div class="editor-control-label">
+                                                <span>Zoom</span>
+                                                <span class="editor-control-value" id="val-bg-image-scale">100%</span>
+                                            </div>
+                                            <input type="range" class="input-range" id="ctrl-bg-image-scale" min="100" max="300" value="100">
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label">
+                                                <span>Pan X</span>
+                                                <span class="editor-control-value" id="val-bg-image-offset-x">50%</span>
+                                            </div>
+                                            <input type="range" class="input-range" id="ctrl-bg-image-offset-x" min="0" max="100" value="50">
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label">
+                                                <span>Pan Y</span>
+                                                <span class="editor-control-value" id="val-bg-image-offset-y">50%</span>
+                                            </div>
+                                            <input type="range" class="input-range" id="ctrl-bg-image-offset-y" min="0" max="100" value="50">
+                                        </div>
+                                    </div>
+
+                                    <h3 class="editor-panel-title">Shadow</h3>
+                                    <div class="bg-mode-tabs" id="shadow-mode-tabs">
+                                        <button class="bg-mode-tab active" data-shadow-mode="none">None</button>
+                                        <button class="bg-mode-tab" data-shadow-mode="preserve">Preserve</button>
+                                        <button class="bg-mode-tab" data-shadow-mode="remove">Remove</button>
+                                    </div>
+                                    <div class="editor-control-row view--hidden" id="row-shadow-strength">
+                                        <div class="editor-control-label">
+                                            <span>Shadow Strength</span>
+                                            <span class="editor-control-value" id="val-shadow-strength">50</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="ctrl-shadow-strength" min="0" max="100" value="50">
+                                    </div>
+
+                                    <h3 class="editor-panel-title">Crop</h3>
+                                    <div class="editor-control-row" style="display:flex; gap:8px;">
+                                        <button class="btn btn-secondary btn-small" id="btn-crop-start" disabled style="flex:1;">Manual Crop</button>
+                                        <button class="btn btn-secondary btn-small view--hidden" id="btn-crop-apply" style="flex:1;">Apply</button>
+                                        <button class="btn btn-secondary btn-small view--hidden" id="btn-crop-cancel" style="flex:1;">Cancel</button>
+                                    </div>
+                                    <button class="btn btn-secondary btn-small" id="btn-crop-reset" disabled style="width:100%;">Reset Crop</button>
+
+                                    <h3 class="editor-panel-title">History</h3>
+                                    <div class="editor-control-row" style="display:flex; gap:8px;">
+                                        <button class="btn btn-secondary btn-small" id="btn-removebg-undo" disabled style="flex:1;">Undo</button>
+                                        <button class="btn btn-secondary btn-small" id="btn-removebg-redo" disabled style="flex:1;">Redo</button>
+                                    </div>
+
+                                    <div class="editor-panel-spacer"></div>
+
+                                    <!-- PHASE 6: commits the current background result onto the shared -->
+                                    <!-- Working Image (core/session.py::commit_file). -->
+                                    <button class="btn btn-secondary" id="btn-removebg-apply" disabled>Apply</button>
+                                    <button class="btn btn-primary" id="btn-removebg-export" disabled>Export</button>
+                                    <p class="editor-panel-note">Exports never overwrite the original file. JPEG destinations flatten transparency onto white.</p>
+                                    <button class="btn btn-secondary view--hidden" id="btn-removebg-send-to-enhance">Continue in Enhance →</button>
+                                </div>
+
+                                <!-- ===== Object Erase tool panel ===== -->
+                                <div class="tool-panel view--hidden" id="panel-tool-erase">
+                                    <p class="editor-panel-note">Paint over an unwanted object, then erase it — the surrounding pixels fill the hole automatically.</p>
+
+                                    <h3 class="editor-panel-title">Brush</h3>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>Brush Size</span>
+                                            <span class="editor-control-value" id="val-brush-size">32</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="ctrl-brush-size" min="8" max="120" value="32">
+                                    </div>
+                                    <button class="btn btn-secondary btn-small" id="btn-clear-mask">Clear Mask</button>
+                                    <div class="editor-control-row" style="display:flex; gap:8px;">
+                                        <button class="btn btn-secondary btn-small" id="btn-erase-undo" disabled style="flex:1;">Undo</button>
+                                        <button class="btn btn-secondary btn-small" id="btn-erase-redo" disabled style="flex:1;">Redo</button>
+                                    </div>
+
+                                    <h3 class="editor-panel-title">Fill Method</h3>
+                                    <div class="bg-mode-tabs" id="erase-method-tabs">
+                                        <button class="bg-mode-tab active" data-erase-method="telea">Standard</button>
+                                        <button class="bg-mode-tab" data-erase-method="navier_stokes">Smooth</button>
+                                    </div>
+
+                                    <button class="btn btn-primary btn-auto-enhance" id="btn-erase-object">
+                                        Erase Painted Area
+                                    </button>
+                                    <p class="editor-panel-note" id="erase-summary"></p>
+
+                                    <h3 class="editor-panel-title">Before / After</h3>
+                                    <input type="range" class="input-range" id="erase-compare-slider" min="0" max="100" value="50">
+
+                                    <div class="editor-panel-spacer"></div>
+
+                                    <button class="btn btn-secondary" id="btn-erase-apply" disabled>Apply</button>
+                                    <button class="btn btn-primary" id="btn-erase-export" disabled>Export</button>
+                                    <p class="editor-panel-note">Exports never overwrite the original file.</p>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== FILTERS VIEW (Phase 4 — Presets / Smart Filters) =====
+                     Same shell as Enhance/Remove BG (dropzone -> workspace,
+                     before/after comparison via editor-compare-*), but the
+                     side panel is a preset grid + intensity slider instead
+                     of manual sliders. All 9 required builtin presets plus
+                     any custom (saved/imported) presets come from
+                     pyBridge.listFilterPresets() -- see core/filters.py /
+                     ui/bridge.py -- and are rendered into
+                     #filter-preset-grid by frontend/js/filters.js. -->
+                <section class="view view--hidden" id="view-filters">
+                    <div class="editor-error view--hidden" id="filters-error"></div>
+
+                    <!-- Empty state / dropzone, shown until an image is loaded -->
+                    <div class="editor-dropzone" id="filters-dropzone">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2a10 10 0 100 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.4-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.4c1.7 0 3.1-1.4 3.1-3.1C20.5 6.6 16.7 2 12 2z"/></svg>
+                        <div class="placeholder-text">Drop an image here</div>
+                        <div class="placeholder-sub">JPG, JFIF, PNG, WEBP, BMP or TIFF — or browse from disk</div>
+                        <button class="btn btn-primary" id="btn-filters-open-empty">Open Image</button>
+                    </div>
+
+                    <!-- Loaded workspace -->
+                    <div class="editor-workspace view--hidden" id="filters-workspace">
+                        <div class="editor-toolbar">
+                            <div class="editor-toolbar-left">
+                                <span class="editor-filename" id="filters-filename">untitled.jpg</span>
+                                <span class="editor-dimensions" id="filters-dimensions"></span>
+                            </div>
+                            <div class="editor-toolbar-right">
+                                <button class="btn btn-secondary btn-small" id="btn-filters-zoom-out" title="Zoom out">−</button>
+                                <span class="editor-zoom-level" id="filters-zoom-level">100%</span>
+                                <button class="btn btn-secondary btn-small" id="btn-filters-zoom-in" title="Zoom in">+</button>
+                                <button class="btn btn-secondary btn-small" id="btn-filters-zoom-fit">Fit</button>
+                                <button class="btn btn-secondary btn-small" id="btn-filters-zoom-reset">100%</button>
+                                <button class="btn btn-secondary btn-small" id="btn-filters-fullscreen" title="Fullscreen">⛶</button>
+                                <button class="btn btn-secondary btn-small" id="btn-filters-replace">Replace</button>
+                            </div>
+                        </div>
+
+                        <div class="editor-body">
+                            <div class="editor-canvas-wrap" id="filters-canvas-wrap">
+                                <button class="btn btn-secondary btn-small editor-fullscreen-exit" id="btn-filters-fullscreen-exit" title="Exit fullscreen (Esc)">✕ Exit Fullscreen</button>
+                                <div class="editor-canvas" id="filters-canvas">
+                                    <img class="editor-image editor-image--before" id="filters-image-before" alt="Original">
+                                    <div class="editor-image-after-wrap" id="filters-image-after-wrap">
+                                        <img class="editor-image editor-image--after" id="filters-image-after" alt="Filtered">
+                                    </div>
+                                    <div class="editor-compare-handle" id="filters-compare-handle"></div>
+                                    <div class="editor-compare-label editor-compare-label--before">Before</div>
+                                    <div class="editor-compare-label editor-compare-label--after">After</div>
+                                    <div class="editor-preview-spinner" id="filters-preview-spinner">Rendering...</div>
+                                </div>
+
+                                <!-- PHASE 4: Filter Comparison overlay -- shows 2-4 rendered
+                                     thumbnails side-by-side when "Compare Selected" is
+                                     clicked. Filled from ui/bridge.py::previewFilterBatch. -->
+                                <div class="filter-compare-overlay view--hidden" id="filter-compare-overlay">
+                                    <div class="filter-compare-overlay-header">
+                                        <span>Filter Comparison</span>
+                                        <button class="btn btn-secondary btn-small" id="btn-compare-close">✕ Close</button>
+                                    </div>
+                                    <div class="filter-compare-strip" id="filter-compare-strip"></div>
+                                </div>
+                            </div>
+
+                            <aside class="editor-panel">
+                                <h3 class="editor-panel-title" style="margin-top:0;">Presets</h3>
+
+                                <!-- PHASE 4: Auto Filter -- analyzes the photo and jumps
+                                     straight to the best-fit builtin preset + intensity.
+                                     See core/filters.py::auto_suggest_preset. -->
+                                <button class="btn btn-secondary btn-small" id="btn-auto-filter" style="width:100%; margin-bottom:8px;" title="Analyze the photo and pick the best-fit filter">✨ Auto Filter</button>
+                                <p class="editor-panel-note view--hidden" id="auto-filter-summary"></p>
+
+                                <div class="filter-search-wrap">
+                                    <svg class="filter-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                                    <input type="text" class="input filter-search-input" id="filter-search-input" placeholder="Search filters...">
+                                </div>
+
+                                <div class="bg-mode-tabs filter-category-tabs--wrap" id="filter-category-tabs">
+                                    <button class="bg-mode-tab active" data-filter-category="all">All</button>
+                                    <button class="bg-mode-tab" data-filter-category="favorites">Favorites</button>
+                                    <button class="bg-mode-tab" data-filter-category="custom">Custom</button>
+                                    <button class="bg-mode-tab" data-filter-category="cinematic">Cinematic</button>
+                                    <button class="bg-mode-tab" data-filter-category="portrait">Portrait</button>
+                                    <button class="bg-mode-tab" data-filter-category="vintage">Vintage</button>
+                                    <button class="bg-mode-tab" data-filter-category="moody">Moody</button>
+                                    <button class="bg-mode-tab" data-filter-category="luxury">Luxury</button>
+                                    <button class="bg-mode-tab" data-filter-category="film">Film</button>
+                                    <button class="bg-mode-tab" data-filter-category="travel">Travel</button>
+                                    <button class="bg-mode-tab" data-filter-category="night">Night</button>
+                                    <button class="bg-mode-tab" data-filter-category="black_and_white">Black &amp; White</button>
+                                </div>
+
+                                <div class="filter-preset-grid" id="filter-preset-grid">
+                                    <!-- Preset cards injected by frontend/js/filters.js from
+                                         pyBridge.listFilterPresets(). Each card:
+                                         .filter-preset-card[data-preset-id] with a name,
+                                         description, and a favorite-star toggle. -->
+                                </div>
+                                <p class="editor-panel-note" id="filters-empty-note">No presets in this category yet.</p>
+
+                                <!-- PHASE 4: Filter Stacking -- combine 2+ presets into one
+                                     merged effect. Each card below gets a small "＋Stack"
+                                     button (wired in filters.js renderPresetGrid); chips of
+                                     everything currently stacked show up here. See
+                                     core/filters.py::apply_preset_stack. -->
+                                <div id="filter-stack-panel" class="view--hidden">
+                                    <h3 class="editor-panel-title">Filter Stack</h3>
+                                    <div class="filter-stack-chips" id="filter-stack-chips"></div>
+                                    <p class="editor-panel-note">Stacked filters combine into one merged look, each at the Intensity below. Add at least 2 to preview the stack.</p>
+                                    <button class="btn btn-secondary btn-small" id="btn-stack-clear" style="width:100%;">Clear Stack</button>
+                                </div>
+
+                                <!-- PHASE 4: Filter Comparison -- select 2-4 presets on the
+                                     cards above (the "⇄" checkbox, wired in filters.js) to see
+                                     them rendered side-by-side. See
+                                     ui/bridge.py::previewFilterBatch. -->
+                                <div id="filter-compare-panel" class="view--hidden">
+                                    <h3 class="editor-panel-title">Compare Filters</h3>
+                                    <p class="editor-panel-note" id="filter-compare-note">Select 2-4 filters (⇄ on each card) to compare.</p>
+                                    <button class="btn btn-secondary btn-small" id="btn-compare-selected" style="width:100%;" disabled>Compare Selected</button>
+                                </div>
+
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Intensity</span>
+                                        <span class="editor-control-value" id="val-filter-intensity">100%</span>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-filter-intensity" min="0" max="100" value="100" disabled>
+                                </div>
+
+                                <h3 class="editor-panel-title">Before / After</h3>
+                                <input type="range" class="input-range" id="filters-compare-slider" min="0" max="100" value="50">
+
+                                <h3 class="editor-panel-title">Custom Presets</h3>
+
+                                <!-- PHASE 4: Custom filter live preview -- build a filter
+                                     FROM SCRATCH (not from an existing preset) with a live
+                                     preview as you drag, via
+                                     ui/bridge.py::previewCustomFilter. -->
+                                <button class="btn btn-secondary btn-small" id="btn-toggle-custom-builder" style="width:100%;">+ Create Custom Filter</button>
+                                <div id="custom-filter-builder" class="view--hidden">
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label"><span>Contrast</span><span class="editor-control-value" id="val-cf-contrast">100</span></div>
+                                        <input type="range" class="input-range" id="ctrl-cf-contrast" min="50" max="150" value="100">
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label"><span>Saturation</span><span class="editor-control-value" id="val-cf-saturation">100</span></div>
+                                        <input type="range" class="input-range" id="ctrl-cf-saturation" min="0" max="200" value="100">
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label"><span>Temperature</span><span class="editor-control-value" id="val-cf-temperature">0</span></div>
+                                        <input type="range" class="input-range" id="ctrl-cf-temperature" min="-100" max="100" value="0">
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label"><span>Vibrance</span><span class="editor-control-value" id="val-cf-vibrance">0</span></div>
+                                        <input type="range" class="input-range" id="ctrl-cf-vibrance" min="-100" max="100" value="0">
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label"><span>Clarity</span><span class="editor-control-value" id="val-cf-clarity">0</span></div>
+                                        <input type="range" class="input-range" id="ctrl-cf-clarity" min="0" max="100" value="0">
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label"><span>Vignette</span><span class="editor-control-value" id="val-cf-vignette">0</span></div>
+                                        <input type="range" class="input-range" id="ctrl-cf-vignette" min="0" max="100" value="0">
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label"><span>Smoke</span><span class="editor-control-value" id="val-cf-smoke">0</span></div>
+                                        <input type="range" class="input-range" id="ctrl-cf-smoke" min="0" max="100" value="0">
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label"><span>Grain</span><span class="editor-control-value" id="val-cf-grain">0</span></div>
+                                        <input type="range" class="input-range" id="ctrl-cf-grain" min="0" max="100" value="0">
+                                    </div>
+                                    <button class="btn btn-secondary btn-small toggle-btn" id="btn-cf-monochrome" style="width:100%;">Black &amp; White</button>
+                                    <div style="display:flex; gap:8px; margin-top:8px;">
+                                        <input type="text" class="input" id="input-cf-name" placeholder="New filter name" style="flex:1;">
+                                        <button class="btn btn-primary btn-small" id="btn-cf-save">Save as New Filter</button>
+                                    </div>
+                                </div>
+
+                                <div style="display:flex; gap:8px;">
+                                    <input type="text" class="input" id="input-preset-name" placeholder="Preset name" style="flex:1;">
+                                    <button class="btn btn-secondary btn-small" id="btn-save-preset" disabled>Save</button>
+                                </div>
+                                <p class="editor-panel-note">Saves the selected preset + intensity above as a new, editable custom preset.</p>
+
+                                <div id="custom-preset-actions" class="view--hidden" style="display:flex; gap:8px; flex-wrap:wrap;">
+                                    <button class="btn btn-secondary btn-small" id="btn-preset-rename">Rename</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-preset-duplicate">Duplicate</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-preset-delete">Delete</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-preset-export">Export</button>
+                                </div>
+                                <button class="btn btn-secondary btn-small" id="btn-preset-import" style="width:100%;">Import Preset…</button>
+
+                                <div class="editor-panel-spacer"></div>
+
+                                <!-- PHASE 6: commits the selected preset+intensity onto the -->
+                                <!-- shared Working Image (core/session.py::commit_preset). -->
+                                <button class="btn btn-secondary" id="btn-filters-apply" disabled>Apply</button>
+                                <button class="btn btn-primary" id="btn-filters-export" disabled>Export</button>
+                                <p class="editor-panel-note">Exports never overwrite the original file.</p>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== PHASE 7: PROMPT ENGINE + AI IMAGE GENERATION ===== -->
+                <section class="view view--hidden" id="view-aigen">
+                    <div class="aigen-layout">
+
+                        <!-- ----- Prompt input column ----- -->
+                        <div class="aigen-main">
+                            <div class="aigen-card">
+                                <label class="aigen-label" for="aigen-prompt">Prompt</label>
+                                <textarea id="aigen-prompt" class="aigen-textarea" rows="4"
+                                    placeholder="Describe the image you want -- subject, style, mood, lighting, colors, background, composition, quality... e.g. &quot;a photorealistic portrait of a woman, golden hour lighting, warm tones, shallow depth of field, high detail&quot;"></textarea>
+
+                                <label class="aigen-label" for="aigen-negative-prompt">Negative prompt <span class="aigen-label-hint">(optional -- what to avoid)</span></label>
+                                <textarea id="aigen-negative-prompt" class="aigen-textarea" rows="2"
+                                    placeholder="e.g. blurry, low quality, extra fingers, watermark"></textarea>
+
+                                <!-- ----- Prompt preview (Synonym recognition / Prompt preview /
+                                     Conflict detection / Unknown instruction handling) ----- -->
+                                <div class="aigen-preview" id="aigen-preview">
+                                    <div class="aigen-preview-empty" id="aigen-preview-empty">Start typing a prompt to see what PixelForge understood, before you generate anything.</div>
+                                    <div class="aigen-preview-body view--hidden" id="aigen-preview-body">
+                                        <div class="aigen-preview-summary" id="aigen-preview-summary"></div>
+                                        <div class="aigen-preview-tags" id="aigen-preview-tags"></div>
+                                        <div class="aigen-preview-warnings view--hidden" id="aigen-preview-warnings"></div>
+                                        <div class="aigen-preview-unrecognized view--hidden" id="aigen-preview-unrecognized"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="aigen-card">
+                                <div class="aigen-row">
+                                    <div class="aigen-field">
+                                        <label class="aigen-label">Aspect ratio</label>
+                                        <div class="aigen-aspect-group" id="aigen-aspect-group">
+                                            <button class="aigen-aspect-btn active" data-aspect="square" title="1:1">Square</button>
+                                            <button class="aigen-aspect-btn" data-aspect="portrait" title="~4:5">Portrait</button>
+                                            <button class="aigen-aspect-btn" data-aspect="portrait_tall" title="~2:3">Tall</button>
+                                            <button class="aigen-aspect-btn" data-aspect="landscape" title="~5:4">Landscape</button>
+                                            <button class="aigen-aspect-btn" data-aspect="landscape_wide" title="~3:2">Wide</button>
+                                            <button class="aigen-aspect-btn" data-aspect="custom" title="Custom width/height">Custom</button>
+                                        </div>
+                                        <div class="aigen-custom-size view--hidden" id="aigen-custom-size">
+                                            <input type="number" id="aigen-custom-width" class="aigen-number-input" min="256" max="1024" step="8" value="512" placeholder="W">
+                                            <span>&times;</span>
+                                            <input type="number" id="aigen-custom-height" class="aigen-number-input" min="256" max="1024" step="8" value="512" placeholder="H">
+                                        </div>
+                                    </div>
+
+                                    <div class="aigen-field">
+                                        <label class="aigen-label" for="aigen-variations">Variations</label>
+                                        <select id="aigen-variations" class="aigen-select">
+                                            <option value="1" selected>1 image</option>
+                                            <option value="2">2 images</option>
+                                            <option value="3">3 images</option>
+                                            <option value="4">4 images</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="aigen-field">
+                                        <label class="aigen-label" for="aigen-provider">Provider</label>
+                                        <select id="aigen-provider" class="aigen-select">
+                                            <option value="pollinations" selected>Free Online (Pollinations, no key)</option>
+                                            <option value="local">Local (offline, no API)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="aigen-row">
+                                    <div class="aigen-field">
+                                        <label class="aigen-label" for="aigen-model">Style / Model</label>
+                                        <select id="aigen-model" class="aigen-select">
+                                            <option value="flux-realism" selected>Realistic Photo (best for real people/scenes)</option>
+                                            <option value="flux">FLUX.1 [schnell] -- General Purpose (fast, high quality, free)</option>
+                                            <option value="flux-anime">Anime / Illustration</option>
+                                            <option value="turbo">Fast Draft (lower detail, quicker)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="aigen-row">
+                                    <div class="aigen-field aigen-field--grow">
+                                        <label class="aigen-label" for="aigen-seed">Seed <span class="aigen-label-hint">(optional -- reuse for a repeatable result)</span></label>
+                                        <input type="number" id="aigen-seed" class="aigen-number-input aigen-number-input--wide" placeholder="Random">
+                                    </div>
+                                </div>
+
+                                <div class="aigen-availability view--hidden" id="aigen-availability"></div>
+
+                                <div class="aigen-actions">
+                                    <button class="btn btn-primary" id="btn-aigen-generate">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 3l1.6 4.6L18 9l-4.4 1.4L12 15l-1.6-4.6L6 9l4.4-1.4z"/></svg>
+                                        Generate
+                                    </button>
+                                    <button class="btn btn-secondary" id="btn-aigen-regenerate" disabled>Regenerate</button>
+                                </div>
+                                <div class="aigen-error view--hidden" id="aigen-error"></div>
+                            </div>
+
+                            <!-- ----- Results (Image variations / select / hand-off) ----- -->
+                            <div class="aigen-card" id="aigen-results-card">
+                                <div class="aigen-results-empty" id="aigen-results-empty">Your generated images will appear here.</div>
+                                <div class="aigen-results-grid view--hidden" id="aigen-results-grid"></div>
+                            </div>
+                        </div>
+
+                        <!-- ----- Prompt history sidebar ----- -->
+                        <aside class="aigen-sidebar">
+                            <div class="aigen-sidebar-header">
+                                <h3>Prompt History</h3>
+                                <button class="btn-icon" id="btn-aigen-history-clear" title="Clear history">Clear</button>
+                            </div>
+                            <div class="aigen-history-list" id="aigen-history-list">
+                                <div class="aigen-history-empty" id="aigen-history-empty">No saved prompts yet -- every prompt you generate with is saved here for reuse.</div>
+                            </div>
+                        </aside>
+                    </div>
+                </section>
+
+                <!-- ===== PHASE 8: BATCH PROCESSING =====
+                     🧮 Not AI -- orchestrates Phase 5 (Analyzer) / Phase 6
+                     (Smart Pipeline) / Phase 4 (Presets) per image. See
+                     core/batch_processor.py (queue/threading engine),
+                     ui/bridge.py's "PHASE 8" section (Slots/Signals),
+                     and frontend/batch.js (this view's logic). -->
+                <section class="view view--hidden" id="view-batch">
+                    <div class="view-inner">
+                        <h1 class="view-heading">Batch Processing</h1>
+                        <p class="view-subheading">Run Analyze → Enhance → Export over many photos at once. Everything happens locally, one image at a time.</p>
+
+                        <div class="editor-error view--hidden" id="batch-error"></div>
+
+                        <!-- Empty state, shown until the queue has at least one item -->
+                        <div class="editor-dropzone" id="batch-dropzone">
+                            <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                            <div class="placeholder-text">Drop images or a folder here</div>
+                            <div class="placeholder-sub">JPG, JFIF, PNG, WEBP, BMP or TIFF — subfolders are scanned too</div>
+                            <div class="batch-dropzone-actions">
+                                <button class="btn btn-primary" id="btn-batch-add-files">Add Images</button>
+                                <button class="btn btn-secondary" id="btn-batch-add-folder">Add Folder</button>
+                            </div>
+                        </div>
+
+                        <!-- Loaded workspace -->
+                        <div class="batch-workspace view--hidden" id="batch-workspace">
+
+                            <div class="batch-toolbar">
+                                <div class="batch-toolbar-left">
+                                    <button class="btn btn-secondary btn-small" id="btn-batch-add-files-2">+ Images</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-batch-add-folder-2">+ Folder</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-batch-detect-dupes">Detect Duplicates</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-batch-clear">Clear Queue</button>
+                                </div>
+                                <div class="batch-toolbar-right" id="batch-status-counts">
+                                    <span class="badge badge--muted" id="batch-count-queued">0 queued</span>
+                                    <span class="badge badge--muted" id="batch-count-previewed">0 previewed</span>
+                                    <span class="badge badge--ok" id="batch-count-done">0 done</span>
+                                    <span class="badge badge--error" id="batch-count-failed">0 failed</span>
+                                </div>
+                            </div>
+
+                            <div class="batch-banner batch-banner--warning view--hidden" id="batch-disk-warning"></div>
+                            <div class="batch-banner batch-banner--info view--hidden" id="batch-dup-warning"></div>
+
+                            <div class="batch-layout">
+                                <!-- ----- Queue table ----- -->
+                                <div class="batch-queue-panel">
+                                    <div class="batch-queue-header">
+                                        <label class="batch-select-all">
+                                            <input type="checkbox" id="batch-select-all" checked>
+                                            <span>Queue (<span id="batch-queue-count">0</span>)</span>
+                                        </label>
+                                    </div>
+                                    <div class="batch-queue-list" id="batch-queue-list"></div>
+                                </div>
+
+                                <!-- ----- Options panel ----- -->
+                                <aside class="editor-panel batch-options-panel" id="batch-options-panel">
+                                    <h3 class="editor-panel-title">Look</h3>
+                                    <div class="settings-row">
+                                        <div class="settings-row-label"><span>Apply</span></div>
+                                        <select class="input" id="batch-opt-mode">
+                                            <option value="smart" selected>Smart Pipeline (per image)</option>
+                                            <option value="preset">One Preset (whole batch)</option>
+                                            <option value="none">No Look Change</option>
+                                        </select>
+                                    </div>
+                                    <div class="settings-row" id="batch-preset-row">
+                                        <div class="settings-row-label"><span>Preset</span></div>
+                                        <select class="input" id="batch-opt-preset"></select>
+                                    </div>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>Intensity</span>
+                                            <span class="editor-control-value" id="val-batch-intensity">80%</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="batch-opt-intensity" min="0" max="100" value="80">
+                                    </div>
+
+                                    <h3 class="editor-panel-title">Output</h3>
+                                    <div class="settings-row">
+                                        <div class="settings-row-label"><span>Folder</span></div>
+                                        <div class="settings-row-input-group">
+                                            <input class="input" id="batch-opt-output-folder" type="text" placeholder="Choose an output folder" readonly>
+                                            <button class="btn btn-secondary btn-small" id="btn-batch-output-folder">Browse</button>
+                                        </div>
+                                    </div>
+                                    <div class="settings-row">
+                                        <div class="settings-row-label"><span>Format</span></div>
+                                        <select class="input" id="batch-opt-format">
+                                            <option value="keep" selected>Keep original</option>
+                                            <option value="jpg">JPG</option>
+                                            <option value="png">PNG</option>
+                                            <option value="webp">WebP</option>
+                                        </select>
+                                    </div>
+                                    <div class="editor-control-row" id="batch-quality-row">
+                                        <div class="editor-control-label">
+                                            <span>Quality</span>
+                                            <span class="editor-control-value" id="val-batch-quality">92%</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="batch-opt-quality" min="1" max="100" value="92">
+                                    </div>
+                                    <div class="settings-row">
+                                        <div class="settings-row-label"><span>Resize</span></div>
+                                        <select class="input" id="batch-opt-resize-mode">
+                                            <option value="none" selected>Original size</option>
+                                            <option value="max_dimension">Max dimension (px)</option>
+                                            <option value="percent">Scale (%)</option>
+                                        </select>
+                                    </div>
+                                    <div class="settings-row view--hidden" id="batch-resize-value-row">
+                                        <div class="settings-row-label"><span>Value</span></div>
+                                        <input class="input" id="batch-opt-resize-value" type="number" min="1" value="2048" style="max-width:120px;">
+                                    </div>
+                                    <div class="settings-row">
+                                        <div class="settings-row-label">
+                                            <span>Naming template</span>
+                                            <span class="settings-row-hint">{name} {index} {date} {time} {preset}</span>
+                                        </div>
+                                        <input class="input" id="batch-opt-naming" type="text" value="{name}" placeholder="{name}">
+                                    </div>
+                                    <div class="settings-row toggle-row">
+                                        <div class="settings-row-label">
+                                            <span>Preview before export</span>
+                                            <span class="settings-row-hint">Stage results for spot-check before writing final files</span>
+                                        </div>
+                                        <label class="switch"><input type="checkbox" id="batch-opt-dry-run"><span class="switch-track"></span></label>
+                                    </div>
+                                    <div class="settings-row toggle-row">
+                                        <div class="settings-row-label"><span>Preserve folder structure</span></div>
+                                        <label class="switch"><input type="checkbox" id="batch-opt-preserve" checked><span class="switch-track"></span></label>
+                                    </div>
+                                    <div class="settings-row toggle-row">
+                                        <div class="settings-row-label"><span>Overwrite existing files</span></div>
+                                        <label class="switch"><input type="checkbox" id="batch-opt-overwrite"><span class="switch-track"></span></label>
+                                    </div>
+
+                                    <h3 class="editor-panel-title">Privacy &amp; Metadata</h3>
+                                    <div class="settings-row toggle-row">
+                                        <div class="settings-row-label">
+                                            <span>Strip EXIF metadata</span>
+                                            <span class="settings-row-hint">Removes camera/location data on export</span>
+                                        </div>
+                                        <label class="switch"><input type="checkbox" id="batch-opt-strip-exif"><span class="switch-track"></span></label>
+                                    </div>
+                                    <div class="settings-row">
+                                        <div class="settings-row-label"><span>Copyright / author</span></div>
+                                        <input class="input" id="batch-opt-copyright" type="text" placeholder="e.g. © Your Name">
+                                    </div>
+
+                                    <h3 class="editor-panel-title">Performance</h3>
+                                    <div class="editor-control-row">
+                                        <div class="editor-control-label">
+                                            <span>CPU throttle</span>
+                                            <span class="editor-control-value" id="val-batch-throttle">Off</span>
+                                        </div>
+                                        <input type="range" class="input-range" id="batch-opt-throttle" min="0" max="100" value="0">
+                                        <p class="editor-panel-note">Adds an idle pause between images to keep the app responsive on the target hardware (i7-7600U, no GPU).</p>
+                                    </div>
+                                    <div class="settings-row toggle-row">
+                                        <div class="settings-row-label"><span>Notify when finished</span></div>
+                                        <label class="switch"><input type="checkbox" id="batch-opt-notify" checked><span class="switch-track"></span></label>
+                                    </div>
+
+                                    <h3 class="editor-panel-title">Scheduled Start</h3>
+                                    <div class="settings-row">
+                                        <div class="settings-row-label">
+                                            <span>Start in</span>
+                                            <span class="settings-row-hint">Minutes from now — 0 starts immediately</span>
+                                        </div>
+                                        <div class="settings-row-input-group">
+                                            <input class="input" id="batch-opt-schedule-minutes" type="number" min="0" value="0" style="max-width:90px;">
+                                            <button class="btn btn-secondary btn-small" id="btn-batch-schedule">Schedule</button>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+
+                            <!-- ----- Overall progress + controls ----- -->
+                            <div class="batch-run-bar">
+                                <div class="batch-run-progress">
+                                    <div class="batch-run-progress-header">
+                                        <span id="batch-run-label">Ready</span>
+                                        <span id="batch-run-eta"></span>
+                                    </div>
+                                    <div class="batch-run-track">
+                                        <div class="batch-run-fill" id="batch-run-fill"></div>
+                                    </div>
+                                </div>
+                                <div class="batch-run-controls">
+                                    <button class="btn btn-primary" id="btn-batch-start">Start Batch</button>
+                                    <button class="btn btn-secondary view--hidden" id="btn-batch-pause">Pause</button>
+                                    <button class="btn btn-secondary view--hidden" id="btn-batch-resume">Resume</button>
+                                    <button class="btn btn-secondary view--hidden" id="btn-batch-cancel">Cancel</button>
+                                    <button class="btn btn-primary view--hidden" id="btn-batch-commit">Commit &amp; Export All</button>
+                                    <button class="btn btn-secondary view--hidden" id="btn-batch-discard">Discard Preview</button>
+                                    <button class="btn btn-secondary" id="btn-batch-retry-failed" disabled>Retry Failed</button>
+                                    <button class="btn btn-secondary" id="btn-batch-export-log">Export Log</button>
+                                </div>
+                            </div>
+
+                            <!-- ----- Batch Analyzer summary (shown after a run) ----- -->
+                            <div class="batch-summary view--hidden" id="batch-summary">
+                                <h3 class="editor-panel-title">Batch Result</h3>
+                                <div class="batch-summary-stats" id="batch-summary-stats"></div>
+                                <div class="batch-summary-categories" id="batch-summary-categories"></div>
+                                <div class="batch-summary-failed view--hidden" id="batch-summary-failed">
+                                    <h4>Failed items</h4>
+                                    <div id="batch-failed-list"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ----- Spot-check preview modal ("Preview before commit") ----- -->
+                        <div class="batch-preview-overlay view--hidden" id="batch-preview-overlay">
+                            <div class="batch-preview-card">
+                                <div class="batch-preview-header">
+                                    <span id="batch-preview-name">Preview</span>
+                                    <button class="btn-icon" id="btn-batch-preview-close" title="Close">✕</button>
+                                </div>
+                                <div class="batch-preview-body">
+                                    <div class="batch-preview-pane">
+                                        <span class="batch-preview-label">Before</span>
+                                        <img id="batch-preview-before" alt="Original">
+                                    </div>
+                                    <div class="batch-preview-pane">
+                                        <span class="batch-preview-label">After</span>
+                                        <img id="batch-preview-after" alt="Result">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== PHASE 9: AI UPSCALING =====
+                     Same dropzone -> workspace shell and zoom/before-after
+                     compare pattern as editor.js/filters.js/removebg.js
+                     (see those views for the original comments on why each
+                     piece works the way it does). See frontend/upscale.js
+                     and ui/bridge.py's "PHASE 9: AI UPSCALING" section. -->
+                <section class="view view--hidden" id="view-upscale">
+                    <div class="editor-error view--hidden" id="upscale-error"></div>
+
+                    <!-- Empty state / dropzone, shown until an image is loaded -->
+                    <div class="editor-dropzone" id="upscale-dropzone">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                        <div class="placeholder-text">Drop an image here</div>
+                        <div class="placeholder-sub">JPG, JFIF, PNG, WEBP, BMP or TIFF — or browse from disk</div>
+                        <button class="btn btn-primary" id="btn-upscale-open-empty">Open Image</button>
+                    </div>
+
+                    <!-- Loaded workspace -->
+                    <div class="editor-workspace view--hidden" id="upscale-workspace">
+                        <div class="editor-toolbar">
+                            <div class="editor-toolbar-left">
+                                <span class="editor-filename" id="upscale-filename">untitled.jpg</span>
+                                <span class="editor-dimensions" id="upscale-dimensions"></span>
+                            </div>
+                            <div class="editor-toolbar-right">
+                                <button class="btn btn-secondary btn-small" id="btn-upscale-zoom-out" title="Zoom out">−</button>
+                                <span class="editor-zoom-level" id="upscale-zoom-level">100%</span>
+                                <button class="btn btn-secondary btn-small" id="btn-upscale-zoom-in" title="Zoom in">+</button>
+                                <button class="btn btn-secondary btn-small" id="btn-upscale-zoom-fit">Fit</button>
+                                <button class="btn btn-secondary btn-small" id="btn-upscale-zoom-reset">100%</button>
+                                <button class="btn btn-secondary btn-small" id="btn-upscale-fullscreen" title="Fullscreen">⛶</button>
+                                <button class="btn btn-secondary btn-small" id="btn-upscale-replace">Replace</button>
+                            </div>
+                        </div>
+
+                        <div class="editor-body">
+                            <div class="editor-canvas-wrap" id="upscale-canvas-wrap">
+                                <button class="btn btn-secondary btn-small editor-fullscreen-exit" id="btn-upscale-fullscreen-exit" title="Exit fullscreen (Esc)">✕ Exit Fullscreen</button>
+                                <div class="editor-canvas" id="upscale-canvas">
+                                    <img class="editor-image editor-image--before" id="upscale-image-before" alt="Original">
+                                    <div class="editor-image-after-wrap" id="upscale-image-after-wrap">
+                                        <img class="editor-image editor-image--after" id="upscale-image-after" alt="AI Upscaled">
+                                    </div>
+                                    <div class="editor-compare-handle" id="upscale-compare-handle"></div>
+                                    <div class="editor-compare-label editor-compare-label--before">Before</div>
+                                    <div class="editor-compare-label editor-compare-label--after">After</div>
+                                    <div class="editor-preview-spinner" id="upscale-preview-spinner">Upscaling...</div>
+                                </div>
+                            </div>
+
+                            <aside class="editor-panel">
+                                <h3 class="editor-panel-title" style="margin-top:0;">AI Upscale</h3>
+
+                                <!-- Model status: cached/ready, downloading, or CPU-warning.
+                                     See ui/bridge.py::getUpscaleModelStatus / ai/upscaler.py::model_status. -->
+                                <p class="editor-panel-note" id="upscale-model-status">Checking AI model status...</p>
+
+                                <div class="editor-control-label" style="margin-bottom:6px;"><span>Resolution</span></div>
+                                <div class="bg-mode-tabs" id="upscale-scale-tabs">
+                                    <button class="bg-mode-tab" data-upscale-scale="original">Original</button>
+                                    <button class="bg-mode-tab active" data-upscale-scale="2x">2×</button>
+                                    <button class="bg-mode-tab" data-upscale-scale="4x">4×</button>
+                                    <button class="bg-mode-tab" data-upscale-scale="custom">Custom</button>
+                                </div>
+
+                                <div id="upscale-custom-size-row" class="view--hidden" style="display:flex; gap:8px; align-items:center; margin-top:8px;">
+                                    <input type="number" class="input" id="input-upscale-width" placeholder="Width" min="1" style="flex:1;">
+                                    <span>×</span>
+                                    <input type="number" class="input" id="input-upscale-height" placeholder="Height" min="1" style="flex:1;">
+                                </div>
+                                <label class="editor-panel-note" style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                                    <input type="checkbox" id="chk-upscale-preserve-aspect" checked>
+                                    Preserve aspect ratio
+                                </label>
+
+                                <p class="editor-panel-note" id="upscale-output-resolution"></p>
+                                <p class="editor-panel-note view--hidden" id="upscale-safety-warning"></p>
+
+                                <h3 class="editor-panel-title">AI Quality</h3>
+
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Denoise</span>
+                                        <span class="editor-control-value" id="val-upscale-denoise">0%</span>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-upscale-denoise" min="0" max="100" value="0">
+                                </div>
+
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Artifact Reduction</span>
+                                        <span class="editor-control-value" id="val-upscale-artifact">0%</span>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-upscale-artifact" min="0" max="100" value="0">
+                                </div>
+
+                                <label class="editor-panel-note" style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                                    <input type="checkbox" id="chk-upscale-face-aware">
+                                    Face-aware enhancement
+                                </label>
+
+                                <h3 class="editor-panel-title">Before / After</h3>
+                                <input type="range" class="input-range" id="upscale-compare-slider" min="0" max="100" value="50">
+
+                                <div class="editor-panel-spacer"></div>
+
+                                <!-- Manual trigger: the AI pass no longer runs automatically on
+                                     every option change (see markPreviewStale in upscale.js) --
+                                     it only starts when this is clicked, so users can finish
+                                     choosing scale/denoise/face-aware settings first, especially
+                                     important on CPU-only machines where each run is heavy. -->
+                                <button class="btn btn-primary" id="btn-upscale-start" style="width:100%; margin-bottom:8px;" disabled>Start AI Upscale</button>
+
+                                <!-- Progress + Cancel for the current run (model download or
+                                     the tiled AI pass itself) -- reuses the global status bar's
+                                     progressChanged/statusChanged signals, see frontend/ui.js. -->
+                                <button class="btn btn-secondary" id="btn-upscale-cancel" style="width:100%; margin-bottom:8px;" disabled>Cancel</button>
+
+                                <!-- PHASE 6: commits the upscaled result onto the shared -->
+                                <!-- Working Image (ui/bridge.py::sessionCommitFile), same -->
+                                <!-- reuse pattern as Remove BG / Straighten / Crop. -->
+                                <button class="btn btn-secondary" id="btn-upscale-apply" disabled>Apply</button>
+                                <button class="btn btn-primary" id="btn-upscale-export" disabled>Export</button>
+                                <p class="editor-panel-note">Exports never overwrite the original file.</p>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== PHASE 10: FACE RESTORATION ("Portrait") =====
+                     Same dropzone -> workspace shell and zoom/before-after
+                     compare pattern as view-upscale directly above (see
+                     that section's own comment for why). What's new here:
+                     a "Detected Faces" checklist (spec's own example UI
+                     shape) with a per-face strength override, plus the
+                     Natural<->Detailed and Skin Protection sliders. See
+                     frontend/restore.js and ui/bridge.py's
+                     "PHASE 10: FACE RESTORATION" section. -->
+                <section class="view view--hidden" id="view-portrait">
+                    <div class="editor-error view--hidden" id="portrait-error"></div>
+
+                    <!-- Empty state / dropzone, shown until an image is loaded -->
+                    <div class="editor-dropzone" id="portrait-dropzone">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+                        <div class="placeholder-text">Drop a photo here</div>
+                        <div class="placeholder-sub">JPG, JFIF, PNG, WEBP, BMP or TIFF — or browse from disk</div>
+                        <button class="btn btn-primary" id="btn-portrait-open-empty">Open Image</button>
+                    </div>
+
+                    <!-- Loaded workspace -->
+                    <div class="editor-workspace view--hidden" id="portrait-workspace">
+                        <div class="editor-toolbar">
+                            <div class="editor-toolbar-left">
+                                <span class="editor-filename" id="portrait-filename">untitled.jpg</span>
+                                <span class="editor-dimensions" id="portrait-dimensions"></span>
+                            </div>
+                            <div class="editor-toolbar-right">
+                                <button class="btn btn-secondary btn-small" id="btn-portrait-zoom-out" title="Zoom out">−</button>
+                                <span class="editor-zoom-level" id="portrait-zoom-level">100%</span>
+                                <button class="btn btn-secondary btn-small" id="btn-portrait-zoom-in" title="Zoom in">+</button>
+                                <button class="btn btn-secondary btn-small" id="btn-portrait-zoom-fit">Fit</button>
+                                <button class="btn btn-secondary btn-small" id="btn-portrait-zoom-reset">100%</button>
+                                <button class="btn btn-secondary btn-small" id="btn-portrait-fullscreen" title="Fullscreen">⛶</button>
+                                <button class="btn btn-secondary btn-small" id="btn-portrait-replace">Replace</button>
+                            </div>
+                        </div>
+
+                        <div class="editor-body">
+                            <div class="editor-canvas-wrap" id="portrait-canvas-wrap">
+                                <button class="btn btn-secondary btn-small editor-fullscreen-exit" id="btn-portrait-fullscreen-exit" title="Exit fullscreen (Esc)">✕ Exit Fullscreen</button>
+                                <div class="editor-canvas" id="portrait-canvas">
+                                    <img class="editor-image editor-image--before" id="portrait-image-before" alt="Original">
+                                    <div class="editor-image-after-wrap" id="portrait-image-after-wrap">
+                                        <img class="editor-image editor-image--after" id="portrait-image-after" alt="Face Restored">
+                                    </div>
+                                    <div class="editor-compare-handle" id="portrait-compare-handle"></div>
+                                    <div class="editor-compare-label editor-compare-label--before">Before</div>
+                                    <div class="editor-compare-label editor-compare-label--after">After</div>
+                                    <div class="editor-preview-spinner" id="portrait-preview-spinner">Restoring...</div>
+                                </div>
+                            </div>
+
+                            <aside class="editor-panel">
+                                <h3 class="editor-panel-title" style="margin-top:0;">Face Restoration</h3>
+
+                                <!-- Model status: cached/ready, downloading, or CPU-warning.
+                                     See ui/bridge.py::getFaceRestoreModelStatus / ai/face_restorer.py::model_status. -->
+                                <p class="editor-panel-note" id="portrait-model-status">Checking AI model status...</p>
+
+                                <!-- "Automatic face detection" + "Face selection" -- spec's own
+                                     example UI shape: "Detected Faces: N / ☑ Face 1 ☑ Face 2 ...".
+                                     Each row also carries its own optional per-face strength
+                                     override ("Per-face restoration"). -->
+                                <div class="editor-control-label" style="margin-bottom:6px;">
+                                    <span>Detected Faces</span>
+                                    <span class="editor-control-value" id="portrait-face-count">0</span>
+                                </div>
+                                <p class="editor-panel-note" id="portrait-face-empty">No faces detected in this photo yet.</p>
+                                <div class="face-select-list" id="portrait-face-list"></div>
+
+                                <h3 class="editor-panel-title">AI Quality</h3>
+
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Restoration Strength</span>
+                                        <span class="editor-control-value" id="val-portrait-strength">80%</span>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-portrait-strength" min="0" max="100" value="80">
+                                </div>
+
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Natural ↔ Detailed</span>
+                                        <span class="editor-control-value" id="val-portrait-natural-detailed">Neutral</span>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-portrait-natural-detailed" min="0" max="100" value="50">
+                                </div>
+
+                                <div class="editor-control-row">
+                                    <div class="editor-control-label">
+                                        <span>Skin Protection</span>
+                                        <span class="editor-control-value" id="val-portrait-skin-protection">60%</span>
+                                    </div>
+                                    <input type="range" class="input-range" id="ctrl-portrait-skin-protection" min="0" max="100" value="60">
+                                </div>
+                                <p class="editor-panel-note">Preserves natural skin texture instead of a smoothed-plastic look.</p>
+
+                                <h3 class="editor-panel-title">Before / After</h3>
+                                <input type="range" class="input-range" id="portrait-compare-slider" min="0" max="100" value="50">
+
+                                <div class="editor-panel-spacer"></div>
+
+                                <!-- Manual trigger: same "the AI pass never auto-runs on every
+                                     slider/checkbox change" reasoning as Upscale's own button --
+                                     see markPreviewStale in restore.js. -->
+                                <button class="btn btn-primary" id="btn-portrait-start" style="width:100%; margin-bottom:8px;" disabled>Start Face Restoration</button>
+
+                                <!-- Progress + Cancel for the current run (model download or the
+                                     per-face AI pass itself) -- reuses the global status bar's
+                                     progressChanged/statusChanged signals, see frontend/ui.js. -->
+                                <button class="btn btn-secondary" id="btn-portrait-cancel" style="width:100%; margin-bottom:8px;" disabled>Cancel</button>
+
+                                <!-- PHASE 6: commits the restored result onto the shared -->
+                                <!-- Working Image (ui/bridge.py::sessionApplyFaceRestoreAsync), -->
+                                <!-- same reuse pattern as AI Upscale / Remove BG / Crop. -->
+                                <button class="btn btn-secondary" id="btn-portrait-apply" disabled>Apply</button>
+                                <button class="btn btn-primary" id="btn-portrait-export" disabled>Export</button>
+                                <p class="editor-panel-note">Exports never overwrite the original file.</p>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== PHASE 11: VIDEO STUDIO =====
+                     🧮 Not AI -- deterministic FFmpeg assembly, see
+                     core/video_studio.py's header for the full design.
+                     Structured like the Batch view (dropzone empty
+                     state -> toolbar + workspace) since both are
+                     "build a queue/timeline, then configure it" tools,
+                     not a single-image canvas like Enhance/Upscale. -->
+                <section class="view view--hidden" id="view-video">
+                    <div class="view-inner">
+                        <h1 class="view-heading">Video Studio</h1>
+                        <p class="view-subheading">Turn a set of photos into a video — motion, transitions, music and titles, rendered locally with FFmpeg.</p>
+
+                        <div class="editor-error view--hidden" id="video-error"></div>
+                        <div class="editor-error view--hidden" id="video-ffmpeg-missing">FFmpeg wasn't found on this machine. Video Studio needs it to render anything — check Settings &gt; Video.</div>
+
+                        <!-- Empty state, shown until the timeline has at least one clip -->
+                        <div class="editor-dropzone" id="video-dropzone">
+                            <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                            <div class="placeholder-text">Drop 2 or more photos here</div>
+                            <div class="placeholder-sub">JPG, PNG, WEBP, BMP or TIFF</div>
+                            <button class="btn btn-primary" id="btn-video-add-images-empty">Add Images</button>
+                        </div>
+
+                        <!-- Loaded workspace -->
+                        <div class="batch-workspace view--hidden" id="video-workspace">
+
+                            <div class="batch-toolbar">
+                                <div class="batch-toolbar-left">
+                                    <button class="btn btn-secondary btn-small" id="btn-video-add-images">+ Images</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-video-undo" disabled title="Undo">↺ Undo</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-video-redo" disabled title="Redo">↻ Redo</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-video-new">New Project</button>
+                                </div>
+                                <div class="batch-toolbar-right">
+                                    <button class="btn btn-secondary btn-small" id="btn-video-load-project">Load Project</button>
+                                    <button class="btn btn-secondary btn-small" id="btn-video-save-project">Save Project</button>
+                                    <span class="badge badge--muted" id="video-ffmpeg-badge">Checking FFmpeg…</span>
+                                </div>
+                            </div>
+
+                            <!-- ----- Timeline strip (drag to reorder) ----- -->
+                            <div class="video-timeline-panel">
+                                <div class="video-timeline-header">
+                                    <span><span id="video-clip-count">0</span> clips · <span id="video-total-duration">0s</span> total · <span id="video-output-dims"></span></span>
+                                    <span class="video-timeline-actions">
+                                        <button class="btn btn-secondary btn-small" id="btn-video-mix-transitions" title="Give every clip a different transition instead of repeating one, so the whole video doesn't look flat">🔀 Mix Transitions</button>
+                                        <button class="btn btn-primary btn-small" id="btn-video-auto-pro" title="One click: varied transitions + varied motion + cinematic color grade + sharpening, applied to every clip">✨ Make Professional</button>
+                                    </span>
+                                </div>
+                                <div class="video-timeline-strip" id="video-timeline-strip"></div>
+                            </div>
+
+                            <div class="video-layout">
+                                <!-- ----- Preview player ----- -->
+                                <div class="video-preview-panel">
+                                    <div class="video-preview-frame" id="video-preview-frame">
+                                        <video class="video-preview-player view--hidden" id="video-preview-player" controls></video>
+                                        <div class="placeholder-text video-preview-empty" id="video-preview-empty">No preview yet</div>
+                                        <div class="video-preview-busy-label" id="video-preview-busy-label">Rendering preview…</div>
+                                    </div>
+                                    <div class="editor-error view--hidden" id="video-preview-playback-error">
+                                        Couldn't play the preview inline (this Qt build's embedded browser doesn't support this video format) — use the button below to open it in your default video player instead.
+                                    </div>
+                                    <button class="btn btn-secondary view--hidden" id="btn-video-open-preview-externally">Open Preview in Default Player ↗</button>
+                                    <button class="btn btn-secondary" id="btn-video-generate-preview">Generate Preview</button>
+                                </div>
+
+                                <!-- ----- Settings tabs ----- -->
+                                <aside class="editor-panel video-settings-panel">
+                                    <div class="video-tabs" id="video-tabs">
+                                        <button class="video-tab is-active" data-tab="clip">Clip</button>
+                                        <button class="video-tab" data-tab="project">Project</button>
+                                        <button class="video-tab" data-tab="audio">Audio</button>
+                                        <button class="video-tab" data-tab="text">Text</button>
+                                        <button class="video-tab" data-tab="watermark">Watermark</button>
+                                        <button class="video-tab" data-tab="export">Export</button>
+                                    </div>
+
+                                    <!-- Clip tab -->
+                                    <div class="video-tab-panel" id="video-tab-clip">
+                                        <div class="placeholder-sub" id="video-clip-none">Select a clip in the timeline to edit it.</div>
+                                        <div id="video-clip-fields" class="view--hidden">
+                                            <div class="editor-control-row">
+                                                <div class="editor-control-label"><span>Duration</span><span class="editor-control-value" id="val-video-clip-duration">4.0s</span></div>
+                                                <input type="range" class="input-range" id="video-clip-duration" min="0.5" max="15" step="0.1" value="4">
+                                            </div>
+                                            <div class="settings-row">
+                                                <div class="settings-row-label"><span>Motion</span></div>
+                                                <select class="input" id="video-clip-motion">
+                                                    <option value="none">None (static)</option>
+                                                    <option value="ken_burns">Ken Burns</option>
+                                                    <option value="zoom_in">Zoom In</option>
+                                                    <option value="zoom_out">Zoom Out</option>
+                                                    <option value="pan_left">Pan Left</option>
+                                                    <option value="pan_right">Pan Right</option>
+                                                    <option value="pan_vertical">Vertical Pan</option>
+                                                    <option value="slow_drift">Slow Motion Drift</option>
+                                                    <option value="tilt_3d">3D Tilt</option>
+                                                </select>
+                                            </div>
+                                            <div class="settings-row">
+                                                <div class="settings-row-label"><span>Motion Intensity</span></div>
+                                                <select class="input" id="video-clip-intensity">
+                                                    <option value="slow">Slow</option>
+                                                    <option value="medium">Medium</option>
+                                                    <option value="strong">Strong</option>
+                                                </select>
+                                            </div>
+                                            <div class="settings-row">
+                                                <div class="settings-row-label"><span>Transition to next</span></div>
+                                                <select class="input" id="video-clip-transition">
+                                                    <option value="none">Cut (none)</option>
+                                                    <option value="fade">Fade</option>
+                                                    <option value="crossfade">Crossfade</option>
+                                                    <option value="dip_to_black">Dip to Black</option>
+                                                    <option value="light">Light Flash</option>
+                                                    <option value="slide_left">Slide Left</option>
+                                                    <option value="slide_right">Slide Right</option>
+                                                    <option value="wipe_left">Wipe Left</option>
+                                                    <option value="wipe_right">Wipe Right</option>
+                                                    <option value="zoom">Zoom</option>
+                                                    <option value="circle_open">Circle Open</option>
+                                                </select>
+                                            </div>
+                                            <div class="editor-control-row">
+                                                <div class="editor-control-label"><span>Transition Duration</span><span class="editor-control-value" id="val-video-clip-transition-duration">0.8s</span></div>
+                                                <input type="range" class="input-range" id="video-clip-transition-duration" min="0.1" max="3" step="0.1" value="0.8">
+                                            </div>
+                                            <label class="tutorial-skip">
+                                                <input type="checkbox" id="video-clip-cover">
+                                                Use as cover frame
+                                            </label>
+                                            <button class="btn btn-secondary btn-small" id="btn-video-remove-clip">Remove Clip</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Project tab -->
+                                    <div class="video-tab-panel view--hidden" id="video-tab-project">
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Resolution</span></div>
+                                            <select class="input" id="video-proj-resolution">
+                                                <option value="720p">720p</option>
+                                                <option value="1080p">1080p</option>
+                                                <option value="4k">4K</option>
+                                            </select>
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Aspect Ratio</span></div>
+                                            <select class="input" id="video-proj-aspect">
+                                                <option value="16:9">16:9 (Landscape)</option>
+                                                <option value="9:16">9:16 (Vertical)</option>
+                                                <option value="1:1">1:1 (Square)</option>
+                                            </select>
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Frame Rate</span></div>
+                                            <select class="input" id="video-proj-fps">
+                                                <option value="24">24 fps</option>
+                                                <option value="30">30 fps</option>
+                                                <option value="60">60 fps</option>
+                                            </select>
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Duration</span></div>
+                                            <select class="input" id="video-proj-duration-mode">
+                                                <option value="auto">Auto (sum of clips)</option>
+                                                <option value="15s">15 seconds</option>
+                                                <option value="30s">30 seconds</option>
+                                                <option value="60s">60 seconds</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="settings-row view--hidden" id="video-proj-custom-duration-row">
+                                            <div class="settings-row-label"><span>Custom Seconds</span></div>
+                                            <input type="number" class="input" id="video-proj-custom-duration" min="1" step="1" value="30">
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Fit Mode</span></div>
+                                            <select class="input" id="video-proj-fit-mode">
+                                                <option value="fill">Fill (crop to cover)</option>
+                                                <option value="fit">Fit (letterbox)</option>
+                                            </select>
+                                        </div>
+                                        <div class="settings-row view--hidden" id="video-proj-bg-fill-row">
+                                            <div class="settings-row-label"><span>Background Fill</span></div>
+                                            <select class="input" id="video-proj-bg-fill">
+                                                <option value="blur">Blurred image</option>
+                                                <option value="black">Solid black</option>
+                                            </select>
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Color Grade</span></div>
+                                            <select class="input" id="video-proj-color-grade">
+                                                <option value="none">None (raw)</option>
+                                                <option value="cinematic">Cinematic</option>
+                                                <option value="warm">Warm</option>
+                                                <option value="cool">Cool</option>
+                                                <option value="vivid">Vivid</option>
+                                                <option value="bw">Black &amp; White</option>
+                                            </select>
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Clarity</span></div>
+                                            <label class="tutorial-skip" title="Unsharp-mask sharpening -- noticeably improves perceived quality on soft/compressed phone photos">
+                                                <input type="checkbox" id="video-proj-sharpen" checked>
+                                                Sharpen images
+                                            </label>
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Cinematic Bars</span></div>
+                                            <label class="tutorial-skip" title="2.35:1 letterbox bars over the top/bottom of the frame -- doesn't change export resolution, just the visible look">
+                                                <input type="checkbox" id="video-proj-cinematic-bars">
+                                                Movie-style black bars
+                                            </label>
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Film Grain</span></div>
+                                            <label class="tutorial-skip" title="Subtle noise texture over the whole video -- breaks up the 'too clean/digital' look">
+                                                <input type="checkbox" id="video-proj-film-grain">
+                                                Add grain texture
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Audio tab -->
+                                    <div class="video-tab-panel view--hidden" id="video-tab-audio">
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Track</span></div>
+                                            <span class="editor-panel-note" id="video-audio-filename">None selected</span>
+                                        </div>
+                                        <button class="btn btn-secondary btn-small" id="btn-video-choose-audio">Choose Music File</button>
+                                        <button class="btn btn-secondary btn-small" id="btn-video-clear-audio">Remove Music</button>
+                                        <!-- PHASE 12: shown the moment a music file is attached -- see
+                                             MUSIC_RIGHTS_NOTICE in core/video_studio.py for the exact wording. -->
+                                        <div class="editor-panel-note editor-panel-note--warning view--hidden" id="video-audio-rights-notice"></div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label"><span>Volume</span><span class="editor-control-value" id="val-video-audio-volume">80%</span></div>
+                                            <input type="range" class="input-range" id="video-audio-volume" min="0" max="100" value="80">
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label"><span>Fade In</span><span class="editor-control-value" id="val-video-audio-fadein">1.0s</span></div>
+                                            <input type="range" class="input-range" id="video-audio-fadein" min="0" max="5" step="0.1" value="1">
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label"><span>Fade Out</span><span class="editor-control-value" id="val-video-audio-fadeout">1.5s</span></div>
+                                            <input type="range" class="input-range" id="video-audio-fadeout" min="0" max="5" step="0.1" value="1.5">
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Fit To Video Length</span></div>
+                                            <select class="input" id="video-audio-duration-match">
+                                                <option value="none">Off (play once)</option>
+                                                <option value="loop">Loop music to fill video</option>
+                                                <option value="trim">Trim music to fit video</option>
+                                            </select>
+                                        </div>
+
+                                        <h3 class="editor-panel-title">Voice-Over / Second Track</h3>
+                                        <p class="editor-panel-note">Limited support: mixed under the music track above, no fades of its own.</p>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Track</span></div>
+                                            <span class="editor-panel-note" id="video-audio2-filename">None selected</span>
+                                        </div>
+                                        <button class="btn btn-secondary btn-small" id="btn-video-choose-audio2">Choose Voice File</button>
+                                        <button class="btn btn-secondary btn-small" id="btn-video-clear-audio2">Remove Voice</button>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label"><span>Volume</span><span class="editor-control-value" id="val-video-audio2-volume">100%</span></div>
+                                            <input type="range" class="input-range" id="video-audio2-volume" min="0" max="100" value="100">
+                                        </div>
+                                    </div>
+
+                                    <!-- Text tab -->
+                                    <div class="video-tab-panel view--hidden" id="video-tab-text">
+                                        <div class="video-text-list" id="video-text-list"></div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Captions</span></div>
+                                            <span class="editor-panel-note" id="video-srt-filename">Import a .srt file</span>
+                                        </div>
+                                        <button class="btn btn-secondary btn-small" id="btn-video-import-srt">Import SRT Subtitles</button>
+                                        <h3 class="editor-panel-title">Add Title</h3>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Text</span></div>
+                                            <input type="text" class="input" id="video-text-input" placeholder="Title text" maxlength="200">
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Position</span></div>
+                                            <select class="input" id="video-text-position">
+                                                <option value="top-left">Top Left</option>
+                                                <option value="top-center">Top Center</option>
+                                                <option value="top-right">Top Right</option>
+                                                <option value="center-left">Center Left</option>
+                                                <option value="center">Center</option>
+                                                <option value="center-right">Center Right</option>
+                                                <option value="bottom-left">Bottom Left</option>
+                                                <option value="bottom-center" selected>Bottom Center</option>
+                                                <option value="bottom-right">Bottom Right</option>
+                                            </select>
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Animation</span></div>
+                                            <select class="input" id="video-text-animation">
+                                                <option value="fade" selected>Fade</option>
+                                                <option value="slide_up">Slide Up</option>
+                                                <option value="slide_down">Slide Down</option>
+                                                <option value="slide_left">Slide Left</option>
+                                                <option value="slide_right">Slide Right</option>
+                                                <option value="typewriter">Typewriter</option>
+                                            </select>
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label"><span>Font Size</span><span class="editor-control-value" id="val-video-text-size">48px</span></div>
+                                            <input type="range" class="input-range" id="video-text-size" min="14" max="140" value="48">
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Color</span></div>
+                                            <input type="color" class="input" id="video-text-color" value="#ffffff">
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label"><span>Opacity</span><span class="editor-control-value" id="val-video-text-opacity">100%</span></div>
+                                            <input type="range" class="input-range" id="video-text-opacity" min="5" max="100" value="100">
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Drop Shadow</span></div>
+                                            <input type="checkbox" id="video-text-shadow" checked>
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label"><span>Start Time</span><span class="editor-control-value" id="val-video-text-start">0.0s</span></div>
+                                            <input type="range" class="input-range" id="video-text-start" min="0" max="60" step="0.1" value="0">
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label"><span>Duration</span><span class="editor-control-value" id="val-video-text-duration">3.0s</span></div>
+                                            <input type="range" class="input-range" id="video-text-duration" min="0.5" max="20" step="0.1" value="3">
+                                        </div>
+                                        <button class="btn btn-primary btn-small" id="btn-video-add-text">Add Title</button>
+                                    </div>
+
+                                    <!-- Watermark tab -->
+                                    <div class="video-tab-panel view--hidden" id="video-tab-watermark">
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Enable Watermark</span></div>
+                                            <input type="checkbox" id="video-watermark-enabled">
+                                        </div>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Type</span></div>
+                                            <select class="input" id="video-watermark-type">
+                                                <option value="text" selected>Text</option>
+                                                <option value="image">Logo Image</option>
+                                            </select>
+                                        </div>
+                                        <div class="settings-row" id="video-watermark-text-row">
+                                            <div class="settings-row-label"><span>Text</span></div>
+                                            <input type="text" class="input" id="video-watermark-text" placeholder="@yourbrand" maxlength="80">
+                                        </div>
+                                        <div class="settings-row view--hidden" id="video-watermark-image-row">
+                                            <div class="settings-row-label"><span>Logo</span></div>
+                                            <span class="editor-panel-note" id="video-watermark-image-filename">None selected</span>
+                                        </div>
+                                        <button class="btn btn-secondary btn-small view--hidden" id="btn-video-choose-watermark-image">Choose Logo Image</button>
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Position</span></div>
+                                            <select class="input" id="video-watermark-position">
+                                                <option value="top-left">Top Left</option>
+                                                <option value="top-right">Top Right</option>
+                                                <option value="bottom-left">Bottom Left</option>
+                                                <option value="bottom-right" selected>Bottom Right</option>
+                                            </select>
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label"><span>Opacity</span><span class="editor-control-value" id="val-video-watermark-opacity">55%</span></div>
+                                            <input type="range" class="input-range" id="video-watermark-opacity" min="5" max="100" value="55">
+                                        </div>
+                                        <div class="editor-control-row">
+                                            <div class="editor-control-label"><span>Size</span><span class="editor-control-value" id="val-video-watermark-scale">16%</span></div>
+                                            <input type="range" class="input-range" id="video-watermark-scale" min="4" max="60" value="16">
+                                        </div>
+                                        <button class="btn btn-primary btn-small" id="btn-video-apply-watermark">Apply Watermark</button>
+                                        <button class="btn btn-secondary btn-small" id="btn-video-clear-watermark">Turn Off Watermark</button>
+                                    </div>
+
+                                    <!-- Export tab -->
+                                    <div class="video-tab-panel view--hidden" id="video-tab-export">
+                                        <div class="settings-row">
+                                            <div class="settings-row-label"><span>Quality</span></div>
+                                            <select class="input" id="video-export-quality">
+                                                <option value="low">Low (fast, small)</option>
+                                                <option value="medium">Medium</option>
+                                                <option value="high" selected>High</option>
+                                                <option value="custom">Custom Bitrate</option>
+                                            </select>
+                                        </div>
+                                        <div class="settings-row view--hidden" id="video-export-bitrate-row">
+                                            <div class="settings-row-label"><span>Bitrate (kbps)</span></div>
+                                            <input type="number" class="input" id="video-export-bitrate" min="500" step="500" value="8000">
+                                        </div>
+                                        <div class="editor-panel-note">Output: MP4 (H.264 + AAC audio)</div>
+                                        <button class="btn btn-primary" id="btn-video-export">Export Video</button>
+                                        <button class="btn btn-secondary view--hidden" id="btn-video-cancel-export">Cancel</button>
+                                        <div class="editor-panel-note view--hidden" id="video-export-result"></div>
+                                        <button class="btn btn-secondary view--hidden" id="btn-video-open-export">Open Exported Video ↗</button>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== PHASE 13: PROJECTS / HISTORY (SQLite) =====
+                     Backed by core/database.py via the Bridge Slots exposed
+                     as window.pixelforge.projects.* (see frontend/bridge.js);
+                     all interaction logic lives in frontend/projects.js. -->
+                <section class="view view--hidden" id="view-projects">
+                    <div class="projects-toolbar">
+                        <div class="projects-toolbar-left">
+                            <input class="input" id="projects-search" type="text" placeholder="Search projects...">
+                            <select class="input" id="projects-status-filter">
+                                <option value="active">Active</option>
+                                <option value="trashed">Trash</option>
+                                <option value="">All</option>
+                            </select>
+                            <select class="input" id="projects-sort">
+                                <option value="updated_at">Last updated</option>
+                                <option value="created_at">Date created</option>
+                                <option value="name">Name</option>
+                            </select>
+                        </div>
+                        <div class="projects-toolbar-right">
+                            <button class="btn btn-secondary" id="btn-projects-import-backup">Restore Backup</button>
+                            <button class="btn btn-primary" id="btn-projects-new">+ New Project</button>
+                        </div>
+                    </div>
+
+                    <div class="projects-empty view--hidden" id="projects-empty">
+                        <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        <div class="placeholder-text" id="projects-empty-text">No projects yet</div>
+                        <div class="placeholder-sub">Create one from here, or Import an image/video from any tool to start one automatically</div>
+                    </div>
+
+                    <div class="projects-grid" id="projects-grid"></div>
+
+                    <!-- Detail panel for one project: media list + edit history + actions -->
+                    <div class="projects-detail-overlay view--hidden" id="projects-detail-overlay">
+                        <div class="projects-detail-card">
+                            <div class="projects-detail-header">
+                                <input class="input projects-detail-name" id="projects-detail-name" type="text">
+                                <button class="btn btn-icon" id="btn-projects-detail-close">✕</button>
+                            </div>
+                            <div class="projects-detail-meta" id="projects-detail-meta"></div>
+                            <div class="projects-detail-actions">
+                                <button class="btn btn-primary" id="btn-projects-detail-open">Open in Editor</button>
+                                <button class="btn btn-secondary" id="btn-projects-detail-duplicate">Duplicate</button>
+                                <button class="btn btn-secondary" id="btn-projects-detail-backup">Export Backup</button>
+                                <button class="btn btn-secondary" id="btn-projects-detail-trash">Move to Trash</button>
+                                <button class="btn btn-secondary view--hidden" id="btn-projects-detail-restore">Restore</button>
+                                <button class="btn btn-danger view--hidden" id="btn-projects-detail-delete">Delete Forever</button>
+                            </div>
+                            <div class="projects-detail-hint" id="projects-detail-hint"></div>
+                            <div class="projects-detail-tabs">
+                                <button class="projects-detail-tab active" data-tab="media">Media</button>
+                                <button class="projects-detail-tab" data-tab="history">Edit History</button>
+                            </div>
+                            <div class="projects-detail-panel" id="projects-detail-media"></div>
+                            <div class="projects-detail-panel view--hidden" id="projects-detail-history"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== PLACEHOLDER VIEW (unbuilt tools) ===== -->
+                <section class="view view--hidden" id="view-placeholder">
+                    <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                    <div class="placeholder-text" id="placeholder-text">This tool isn't built yet</div>
+                    <div class="placeholder-sub" id="placeholder-sub">Coming in a later development phase</div>
+                </section>
+
+            </div>
+
+            <!-- ===== GLOBAL STATUS / PROGRESS BAR =====
+                 Hidden while idle. Driven by pyBridge.statusChanged /
+                 pyBridge.progressChanged (see bridge.py, bridge.js, ui.js).
+                 Shared by every long-running operation (batch, upscale,
+                 video export, etc.) instead of each view building its own. -->
+            <div class="global-status-bar" id="global-status-bar">
+                <span class="global-status-spinner" id="global-status-spinner"></span>
+                <span class="global-status-text" id="global-status-text">Ready</span>
+                <div class="global-status-track">
+                    <div class="global-status-fill" id="global-status-fill"></div>
+                </div>
+                <span class="global-status-percent" id="global-status-percent"></span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- ===== FIRST-RUN TUTORIAL OVERLAY =====
+         Shown once (tracked via getSetting/setSetting -> "tutorial_seen").
+         Re-openable from Settings > Help > "Show tutorial". -->
+    <div class="tutorial-overlay view--hidden" id="tutorial-overlay">
+        <div class="tutorial-card">
+            <div class="tutorial-step" data-step="1">
+                <h3>Welcome to PixelForge AI</h3>
+                <p>Everything here runs locally on your machine — nothing is
+                   uploaded or sent to the cloud. Let's take a 30-second look
+                   around.</p>
+            </div>
+            <div class="tutorial-step" data-step="2">
+                <h3>The sidebar</h3>
+                <p>Each tool lives on the left. Anything marked
+                   <span class="badge badge--muted">Soon</span> is still being
+                   built — clicking it shows a placeholder, not an error.</p>
+            </div>
+            <div class="tutorial-step" data-step="3">
+                <h3>Import &amp; Settings</h3>
+                <p>Use <strong>Import</strong> in the top bar to bring in an
+                   image any time. Your output folder, theme, and AI model
+                   status all live in <strong>Settings</strong>.</p>
+            </div>
+
+            <div class="tutorial-dots" id="tutorial-dots">
+                <span class="tutorial-dot active" data-dot="1"></span>
+                <span class="tutorial-dot" data-dot="2"></span>
+                <span class="tutorial-dot" data-dot="3"></span>
+            </div>
+
+            <div class="tutorial-actions">
+                <label class="tutorial-skip">
+                    <input type="checkbox" id="tutorial-dont-show">
+                    Don't show this again
+                </label>
+                <div class="tutorial-buttons">
+                    <button class="btn btn-secondary btn-small" id="tutorial-prev">Back</button>
+                    <button class="btn btn-primary btn-small" id="tutorial-next">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Qt's built-in QWebChannel client library, always available to a QWebEngineView -->
+    <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+    <script src="bridge.js"></script>
+    <script src="ui.js"></script>
+    <script src="editor.js"></script>
+    <script src="removebg.js"></script>
+    <script src="filters.js"></script>
+    <script src="promptgen.js"></script>
+    <script src="batch.js"></script>
+    <script src="upscale.js"></script>
+    <script src="restore.js"></script>
+    <script src="video.js"></script>
+    <script src="projects.js"></script>
+</body>
+</html>

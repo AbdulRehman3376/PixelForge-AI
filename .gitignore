@@ -1,0 +1,35 @@
+﻿# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Runtime data -- gets created/filled by the app itself, don't commit
+logs/
+database/*.db
+database/*.db-journal
+
+# AI model files (downloaded on first run, not source)
+*.onnx
+*.pth
+*.pt
+models/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+ffmpeg/
+
+cache/
+data/
+database/
+config.json
+presets/custom_presets.json
