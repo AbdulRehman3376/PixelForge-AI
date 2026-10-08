@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const modelSelect = document.getElementById("aigen-model");
     const seedInput = document.getElementById("aigen-seed");
     const availabilityBox = document.getElementById("aigen-availability");
+    const apiKeyInput = document.getElementById("aigen-apikey");
+    const localModelSelect = document.getElementById("aigen-local-model");
 
     // ----- Actions / status -----
     const btnGenerate = document.getElementById("btn-aigen-generate");
@@ -100,6 +102,45 @@ document.addEventListener("DOMContentLoaded", () => {
     if (modelSelect) {
         modelSelect.addEventListener("change", () => { modelManuallySet = true; });
     }
+
+    // IMPORTANT FIX: window.pixelforge tab banta hai jab Python bridge connect
+    // ho jata hai -- page load par ye abhi undefined hota hai, is liye pehle
+    // key box kabhi load/save nahi hota tha. Ab bridge ready hone ka intezar.
+    function whenBridgeReady(fn) {
+        if (window.pixelforge) { fn(); return; }
+        if (window.onPixelforgeReady) { window.onPixelforgeReady(fn); return; }
+        const timer = setInterval(() => {
+            if (window.pixelforge) { clearInterval(timer); fn(); }
+        }, 100);
+    }
+
+    whenBridgeReady(() => {
+        // Local model choice -> config.json ("" = auto-pick for this PC).
+        if (localModelSelect) {
+            window.pixelforge.getSetting("local_image_model", (value) => {
+                localModelSelect.value = value || "";
+            });
+            localModelSelect.addEventListener("change", () => {
+                window.pixelforge.setSetting("local_image_model", localModelSelect.value);
+            });
+        }
+
+        // Pollinations API key: stored in config.json via the normal settings
+        // bridge (local file only). Free key = no watermark + better models.
+        if (apiKeyInput) {
+            window.pixelforge.getSetting("pollinations_api_key", (value) => {
+                if (value) apiKeyInput.value = value;
+            });
+            const saveKey = () => {
+                const v = apiKeyInput.value.trim();
+                if (!v) return; // khali box se saved key delete nahi hogi
+                window.pixelforge.setSetting("pollinations_api_key", v);
+                checkAvailability();
+            };
+            apiKeyInput.addEventListener("change", saveKey);
+            apiKeyInput.addEventListener("blur", saveKey);
+        }
+    });
 
     // ============================================================
     // Small local helper (this view's own copy -- editor.js/filters.js
@@ -214,13 +255,30 @@ document.addEventListener("DOMContentLoaded", () => {
         availabilityBox.classList.remove("view--hidden");
 
         const localBadge = local.available
-            ? `<span class="badge badge--ok">Local: ready</span>`
+            ? `<span class="badge badge--ok" title="Recommended model: ${escapeHtml(local.recommended || "")}">Local: ready (${escapeHtml(local.device === "cuda" ? (local.gpu || "GPU") + " " + local.vram_gb + "GB" : "CPU only")})</span>`
             : `<span class="badge badge--muted" title="${escapeHtml(local.message || "")}">Local: needs setup</span>`;
         const cloudBadge = cloud.available
-            ? `<span class="badge badge--ok">Cloud: configured</span>`
-            : `<span class="badge badge--muted" title="${escapeHtml(cloud.message || "")}">Cloud: not configured (optional)</span>`;
+            ? (cloud.has_key
+                ? `<span class="badge badge--ok" title="${escapeHtml(cloud.message || "")}">Online: key set (no watermark)</span>`
+                : `<span class="badge badge--muted" title="${escapeHtml(cloud.message || "")}">Online: no key (watermark possible)</span>`)
+            : `<span class="badge badge--muted" title="${escapeHtml(cloud.message || "")}">Online: unavailable</span>`;
 
         availabilityBox.innerHTML = `${localBadge} ${cloudBadge}`;
+
+        // Disable local models this PC can't run safely (prevents hangs).
+        if (localModelSelect && Array.isArray(local.safe_models)) {
+            Array.from(localModelSelect.options).forEach((opt) => {
+                if (!opt.value) return;
+                const ok = local.safe_models.includes(opt.value);
+                opt.disabled = !ok;
+                opt.textContent = opt.textContent.replace(/ \[not for this PC\]$/, "") +
+                    (ok ? "" : " [not for this PC]");
+            });
+            if (localModelSelect.selectedOptions[0] && localModelSelect.selectedOptions[0].disabled) {
+                localModelSelect.value = "";
+                window.pixelforge.setSetting("local_image_model", "");
+            }
+        }
         if (!local.available) {
             availabilityBox.title = local.message || "";
         }
@@ -245,6 +303,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function buildGenerateParams() {
+        if (localModelSelect && window.pixelforge) {
+            window.pixelforge.setSetting("local_image_model", localModelSelect.value);
+        }
+        // Key sirf tab save hoti hai jab box mein kuch likha ho -- khali box
+        // purani saved key ko kabhi mita nahi sakta (yehi bug tha).
+        if (apiKeyInput && window.pixelforge && apiKeyInput.value.trim()) {
+            window.pixelforge.setSetting("pollinations_api_key", apiKeyInput.value.trim());
+        }
         const dims = currentDimensions();
         const seedRaw = seedInput.value.trim();
         return {
@@ -255,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
             custom_height: dims.height,
             num_images: Number(variationsSelect.value) || 1,
             provider: providerSelect.value || "local",
-            model_id: modelSelect ? (modelSelect.value || "flux-realism") : "flux-realism",
+            model_id: modelSelect ? (modelSelect.value || "flux") : "flux",
             seed: seedRaw === "" ? null : Number(seedRaw),
         };
     }
@@ -291,6 +357,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         lastResult = result;
         btnRegenerate.disabled = false;
+        if (result.notice) {
+            availabilityBox.classList.remove("view--hidden");
+            availabilityBox.title = result.notice;
+        }
 
         resultsEmpty.classList.add("view--hidden");
         resultsGrid.classList.remove("view--hidden");

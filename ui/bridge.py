@@ -2746,7 +2746,26 @@ class Bridge(QObject):
         # cooperative cancellation gets a chance to actually stop the
         # background thread, on top of run_with_timeout's own
         # documented "can't force-kill a thread" limitation.
-        timeout_seconds = 120 if downscale_source_to else 1800
+        # FIX: the model download/load used to be INSIDE this timeout, so on
+        # the first run (or a slow connection) the ~65MB download alone ate
+        # the whole 120s budget and the upscale was killed. Download/load
+        # now happens first, with NO timeout (the Cancel button still
+        # works), and the timeout below only covers the actual tile work.
+        from ai.upscaler import _get_session
+        _get_session(
+            on_progress=self._upscale_progress,
+            cancel_event=self._upscale_cancel_event,
+        )
+
+        # Timeout scaled to the real amount of work. Each 128px tile takes
+        # a few seconds on a CPU-only laptop, so a fixed 120s/1800s cap was
+        # too small for anything but tiny images. 20s/tile is deliberately
+        # generous -- this is only a safety net against a true hang.
+        import math
+        stride = 112  # DEFAULT_TILE_SIZE - DEFAULT_TILE_OVERLAP
+        tiles = max(1, math.ceil(source.height / stride)) * max(1, math.ceil(source.width / stride))
+        floor = 300 if downscale_source_to else 1800
+        timeout_seconds = max(floor, tiles * 20)
 
         def _run():
             return upscale_image(
@@ -2768,9 +2787,8 @@ class Bridge(QObject):
             self._upscale_cancel_event.set()
             raise UpscaleError(
                 "AI upscaling is taking much longer than expected and was "
-                "stopped. This can happen on a slow/first-run model "
-                "download -- try again once it's cached, or use a smaller "
-                "scale/custom size."
+                "stopped. On this CPU-only PC try a smaller image, 2x "
+                "instead of 4x, or a smaller custom size."
             )
         return result, exif_bytes, icc_profile
 
@@ -2792,7 +2810,7 @@ class Bridge(QObject):
         def work():
             options = self._parse_upscale_options(options_json)
             try:
-                result, _exif, _icc = self._do_upscale(source_path, options, downscale_source_to=500)
+                result, _exif, _icc = self._do_upscale(source_path, options, downscale_source_to=320)
             except UpscaleCancelled:
                 return {"ok": False, "error": "Cancelled.", "cancelled": True}
             except UpscaleError as exc:

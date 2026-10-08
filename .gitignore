@@ -1,35 +1,98 @@
-﻿# Byte-compiled / cache
+﻿# =========================
+# PixelForge .gitignore
+# =========================
+
+# Python cache / bytecode
 __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 # Virtual environment
 venv/
 .venv/
 env/
+ENV/
 
-# Runtime data -- gets created/filled by the app itself, don't commit
+# PixelForge runtime / temporary files
+Temp/
+temp/
+tmp/
 logs/
-database/*.db
-database/*.db-journal
+cache/
+Cache/
 
-# AI model files (downloaded on first run, not source)
+# Python / pip cache
+pip-cache/
+.pip-cache/
+.cache/
+
+# AI / ML downloaded models
+models/
+Models/
 *.onnx
 *.pth
 *.pt
-models/
+*.bin
+*.safetensors
+*.ckpt
 
-# Editor / OS
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
+# HuggingFace / Transformers / Torch cache
+HuggingFace/
+huggingface/
+transformers/
+Torch/
 
+# FFmpeg
 ffmpeg/
 
-cache/
+# Generated / processed files
+output/
+outputs/
+generated/
+processed/
+exports/
+results/
+
+# Runtime data
 data/
+runtime/
+sessions/
+
+# Database / local runtime database
 database/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Local configuration / secrets
 config.json
+.env
+.env.*
+
+# Custom user-generated presets
 presets/custom_presets.json
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build / packaging
+build/
+dist/
+*.spec
+
+# Backup files
+*.bak
+*.backup
+*.old
+# Local storage diagnostic script
+find_c_usage.py

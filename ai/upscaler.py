@@ -106,7 +106,8 @@ from ai.face_detector import detect_faces
 
 # ===================== CONSTANTS =====================
 
-_CACHE_DIR = Path(__file__).resolve().parent.parent / "cache" / "models" / "upscale"
+from core.paths import model_dir as _model_dir
+_CACHE_DIR = _model_dir("upscale")
 _MODEL_FILENAME = "RealESRGAN_x4plus.onnx"
 _MODEL_PATH = _CACHE_DIR / _MODEL_FILENAME
 
@@ -509,7 +510,7 @@ def _upscale_ai(session, image_rgb: np.ndarray, tile_size: int, tile_overlap: in
     # laptop over speed, even if that means the run takes noticeably
     # longer wall-clock.
     _cooldown_env = os.environ.get("PIXELFORGE_UPSCALE_COOLDOWN")
-    cooldown_seconds = float(_cooldown_env) if _cooldown_env is not None else 0.6
+    cooldown_seconds = float(_cooldown_env) if _cooldown_env is not None else 0.15
 
     def _feather_mask(th, tw):
         wy = np.ones(th, dtype=np.float32)

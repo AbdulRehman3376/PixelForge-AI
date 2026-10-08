@@ -1335,8 +1335,8 @@
                                     <div class="aigen-field">
                                         <label class="aigen-label" for="aigen-provider">Provider</label>
                                         <select id="aigen-provider" class="aigen-select">
-                                            <option value="pollinations" selected>Free Online (Pollinations, no key)</option>
-                                            <option value="local">Local (offline, no API)</option>
+                                            <option value="pollinations" selected>Online (Pollinations)</option>
+                                            <option value="local">Local (offline, no watermark)</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1349,7 +1349,31 @@
                                             <option value="flux">FLUX.1 [schnell] -- General Purpose (fast, high quality, free)</option>
                                             <option value="flux-anime">Anime / Illustration</option>
                                             <option value="turbo">Fast Draft (lower detail, quicker)</option>
+                                            <option value="zimage">Z-Image -- sharp &amp; detailed (may need free key)</option>
+                                            <option value="seedream">Seedream -- high quality (needs free key)</option>
+                                            <option value="gptimage">GPT Image -- best prompt following (needs key)</option>
                                         </select>
+                                    </div>
+                                </div>
+
+                                <div class="aigen-row">
+                                    <div class="aigen-field aigen-field--grow">
+                                        <label class="aigen-label" for="aigen-local-model">Local model <span class="aigen-label-hint">(used when Provider = Local; downloads once, then works offline)</span></label>
+                                        <select id="aigen-local-model" class="aigen-select">
+                                            <option value="" selected>Auto (best for this PC)</option>
+                                            <option value="realvis">RealVisXL -- Realistic photos (~7 GB, needs NVIDIA GPU 8GB+)</option>
+                                            <option value="flux">FLUX.1 schnell -- Best quality (~24 GB, 16GB+ GPU)</option>
+                                            <option value="turbo">SD-Turbo -- Fast, decent (~2 GB)</option>
+                                            <option value="small">Small -- Draft (~0.7 GB)</option>
+                                            <option value="tiny">Tiny -- Draft (~0.5 GB)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="aigen-row">
+                                    <div class="aigen-field aigen-field--grow">
+                                        <label class="aigen-label" for="aigen-apikey">Pollinations API key <span class="aigen-label-hint">(free at enter.pollinations.ai -- removes watermark, more models)</span></label>
+                                        <input type="password" id="aigen-apikey" class="aigen-number-input aigen-number-input--wide" placeholder="sk_... or pk_... (optional)" autocomplete="off" spellcheck="false">
                                     </div>
                                 </div>
 

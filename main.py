@@ -3,6 +3,10 @@
 
 import os
 
+# D: drive redirect -- MUST be first (models/cache/temp ko C: se hataata hai).
+from core import paths as _pf_paths
+_pf_paths.apply()
+
 # ---------------------------------------------------------------------
 # CONFIRMED root cause (seen directly in this machine's startup log):
 # "Failed to create GLES3 context, fallback to GLES2" / "Failed to

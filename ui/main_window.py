@@ -30,6 +30,15 @@ class MainWindow(QMainWindow):
 
         # ----- Web view (renders frontend/index.html) -----
         self.web_view = QWebEngineView()
+
+        # Chromium ka cache/cookies/localStorage C:\Users\..\AppData ki jagah D: par.
+        try:
+            from core.paths import WEBENGINE_DIR
+            _profile = self.web_view.page().profile()
+            _profile.setCachePath(str(WEBENGINE_DIR / "cache"))
+            _profile.setPersistentStoragePath(str(WEBENGINE_DIR / "storage"))
+        except Exception:  # noqa: BLE001 - kabhi startup nahi rokna chahiye
+            pass
         self.setCentralWidget(self.web_view)
 
         # BUGFIX (Phase 2): by default, QtWebEngine (Chromium) blocks a

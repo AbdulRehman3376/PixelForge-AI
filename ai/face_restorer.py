@@ -115,7 +115,8 @@ from ai.face_detector import detect_faces as _detect_faces_raw
 
 # ===================== CONSTANTS =====================
 
-_CACHE_DIR = Path(__file__).resolve().parent.parent / "cache" / "models" / "facerestore"
+from core.paths import model_dir as _model_dir
+_CACHE_DIR = _model_dir("facerestore")
 _MODEL_FILENAME = "GFPGANv1.4.onnx"
 _MODEL_PATH = _CACHE_DIR / _MODEL_FILENAME
 

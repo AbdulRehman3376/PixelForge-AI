@@ -48,7 +48,12 @@ DEFAULTS = {
     "preview_max_size": "1400",
     "history_limit": "30",
     "scene_classifier_enabled": "true",
+    # PERMANENT: config.json delete ho, Reset ho, ya box khali ho -- key wapas yehi rahegi.
+    "pollinations_api_key": "sk_nTnjFuGYM04nNbG6LtFZoN1hGl8ddh0x",
 }
+
+# In keys ki value kabhi khali nahi ho sakti (khali = default wapas).
+_NEVER_EMPTY = {"pollinations_api_key"}
 
 
 def _load() -> dict:
@@ -65,6 +70,9 @@ def _load() -> dict:
         # str-returning Slot contract described in the header.
         for key, value in data.items():
             merged[key] = _to_str(value)
+        for key in _NEVER_EMPTY:
+            if not merged.get(key, "").strip():
+                merged[key] = DEFAULTS[key]
         return merged
     except (json.JSONDecodeError, OSError, UnicodeDecodeError):
         return dict(DEFAULTS)
@@ -113,6 +121,8 @@ def set_setting(key: str, value) -> str:
     if not key:
         raise ValueError("Setting key can't be empty.")
     stored = _to_str(value)
+    if key in _NEVER_EMPTY and not stored.strip():
+        stored = DEFAULTS[key]
     data = _load()
     data[key] = stored
     _save(data)
